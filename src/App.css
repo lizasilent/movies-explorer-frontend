@@ -16,6 +16,7 @@ box-sizing: border-box;
 }
 
 .header {
+  background-color: #DDDEE3;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -23,7 +24,6 @@ box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
   padding: 18px 70px;
-  margin-bottom: 20px;
 }
 
 .header__logo {
@@ -35,8 +35,6 @@ box-sizing: border-box;
 .header__container{
   display: flex;
   flex-direction: row;
-  font-style: normal;
-  font-weight: 500;
   font-size: 12px;
   line-height: 16px;
 }
@@ -49,8 +47,7 @@ box-sizing: border-box;
 }
 
 .header__button{
-  background-color: #2BE080;
-  border-style: none;
+  background-color:#3456F3;
   border-radius: 3px;
   color: white;
   padding: 8px 20px;
@@ -58,25 +55,27 @@ box-sizing: border-box;
 }
 
 .promo{
-  background-color: #F5F5F5;
+  background-color: #DDDEE3;
+  background-image: url(./images/main-landing_img.png);
+  background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  padding: 160px 235px 30px;
+  padding: 184px 275px 224px;
 }
 
 .promo__title{
   width: 730;
-  font-style: normal;
-  font-weight: normal;
   font-size: 50px;
   line-height: 58px;
-  padding-bottom: 151px;
-  margin: 0;
+  text-align: center;
+  font-weight: 400;
 }
 
 .navigation {
   background-color: #F5F5F5;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 .navigation__menu{
@@ -84,22 +83,13 @@ box-sizing: border-box;
   justify-content: center;
   flex-direction: row;
   list-style-type: none;
-  text-align: center;
 }
 
 .navigation__link{
-  display: block;
   color: black;
-  background-color: #E8E8E8;
-  min-width: 96px;
-  border-radius: 10px;
-  margin-right: 10px;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
+  margin-right: 40px;
+  font-size: 13px;
   line-height: 16px;
-  text-decoration: none;
-  padding: 10px;
 }
 
 .about{
@@ -165,7 +155,7 @@ box-sizing: border-box;
 }
 
 .scale__visual_green {
-  background-color: #2BE080;
+  background-color: #3456F3;
   color:black; 
 }
 
@@ -213,9 +203,16 @@ color: #A0A0A0;
 }
 
 .navigation__link_square {
+  background-color: #E8E8E8;
+  border-radius: 10px;
+  color: black;
+  margin-right: 10px;
+  font-size: 13px;
+  line-height: 16px;
   padding-top: 21px;
   padding-bottom: 21px;
   width: 90px;
+  text-align: center;
 }
 
 .aboutMe{
@@ -223,30 +220,114 @@ color: #A0A0A0;
   justify-content: center;
   flex-direction: column;
   padding: 100px 70px;
-  background-color: #FFFFFF;
+  background-color: #FAFAFA;
 }
 
 .aboutMe__info{
-
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: 66px;
 }
 
 .aboutMe__text{
-
+margin-right: 270px;
+max-width: 600px;
 }
 
 .aboutMe__name{
-
+  font-style: normal;
+  font-weight: normal;
+  font-size: 50px;
+  line-height: 58px;
+  letter-spacing: -0.04em;
+  margin: 0;
+  padding-bottom: 18px;
 }
 
 .aboutMe__profession{
-
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 20px;
+margin: 0;
+padding-bottom: 26px;
 }
 
 .aboutMe__description{
-
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+  padding-bottom: 99px;
 }
 
 .aboutMe__social{
-  
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+margin: 0;
+
 }
 
+.aboutMe__avatar {
+  max-width: 270px;
+  max-height: 327px;
+  border-radius: 10px;
+}
+
+.aboutMe__link {
+  text-decoration: none;
+  color: black;
+  margin-right: 20px;
+}
+
+.portfolio {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 70px 125px;
+  background-color: #FAFAFA;
+  margin: 0;
+}
+
+.portfolio__title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+.portfolio__menu {
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  letter-spacing: -0.04em;
+  margin: 0;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.portfolio__menu:last-child {
+  border-bottom: none;
+}
+
+.portfolio__link {
+  text-decoration: none;
+  color: black;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 60px;
+  letter-spacing: -0.04em;
+  margin:0;
+}
+
+/* .portfolio__text {
+  margin:0;
+} */
