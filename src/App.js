@@ -1,7 +1,8 @@
 import './App.css';
 import mainLogo from "./images/logo.png";
 import myPhoto from "./images/avatar.jpg";
-import arrowIcon from "./images/arrow_icon.png";
+import userLogo from "./images/main_icon.png";
+import testpic from "./images/testpic.png";
 
 function App() {
   return (
@@ -110,6 +111,44 @@ function App() {
           </div>
 
           </footer>
+          <header className="header header_white">
+            <div className="header__logo">
+            <img alt='лого' src={mainLogo}/>
+            </div>
+            <div>
+            <div className="header__container">
+              <p className="header__signup">Фильмы</p>
+              <p className="header__signup">Сохраненные фильмы</p>
+              </div>
+
+            </div>
+                <div className="header__container">
+                <p className="header__signup">Аккаунт</p>
+                <a href="" className="header__signup"><img src={userLogo}/></a>
+                </div>
+          </header>
+          <div className="search">
+            <form action="" method="get" classname="search__bar">
+            <input name="search" placeholder="Фильм" type="search" classname="search__input"/>
+            <button type="submit" classname="search__button">Поиск</button>
+          </form>
+          </div>
+          <div className="grid">
+          <ul className="grid__template">
+          <li className="grid__item">
+        <img src={testpic} alt="" className="grid__image"/>
+        <div className="grid__text-container">
+          <p className="grid__text">33 слова о дизайне</p>
+          <p className="grid__duration">33 hours</p>
+        </div>
+      </li>
+     
+          </ul>
+          </div>
+          <div className="more">
+          <button className="more__button" type="button">Еще</button>
+          </div>
+
     </div>
   </div>
   );
