@@ -89,15 +89,27 @@ function App() {
             <div className="portfolio">
               <p className="portfolio__title">Портфолио</p>
               <div className="portfolio__menu"><p className="portfolio__text">Статичный сайт</p><p><a href="#" className="portfolio__link">↗</a></p></div>
+              <div className="portfolio__line"/>
               <div className="portfolio__menu"><p className="portfolio__text">Адаптивный сайт</p><p><a href="#" className="portfolio__link">↗</a></p></div>
+              <div className="portfolio__line"/>
               <div className="portfolio__menu"><p className="portfolio__text">Одностраничное приложение</p><p><a href="#" className="portfolio__link">↗</a></p></div>
-
-              
-
             </div>
           </main>
           
-          <footer></footer>
+          <footer className="footer">
+
+          <div className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</div>
+          <div className="portfolio__line"/>
+          <div className="footer__infobox">
+            <p className="footer__copyright">© 2020</p>
+            <ul className="footer__links">
+            <li><a href="https://praktikum.yandex.ru/" className="footer__link">Яндекс.Практикум</a></li>
+            <li><a href="https://github.com/lizasilent" className="footer__link">Github</a></li>
+            <li><a href="https://www.facebook.com/lizaveta.silent/" className="footer__link">Facebook</a></li>
+          </ul>
+          </div>
+
+          </footer>
     </div>
   </div>
   );

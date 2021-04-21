@@ -48,6 +48,7 @@ box-sizing: border-box;
 
 .header__button{
   background-color:#3456F3;
+  border-style: none;
   border-radius: 3px;
   color: white;
   padding: 8px 20px;
@@ -310,11 +311,6 @@ margin: 0;
   font-size: 30px;
   letter-spacing: -0.04em;
   margin: 0;
-  border-bottom: 1px solid #E8E8E8;
-}
-
-.portfolio__menu:last-child {
-  border-bottom: none;
 }
 
 .portfolio__link {
@@ -328,6 +324,58 @@ margin: 0;
   margin:0;
 }
 
-/* .portfolio__text {
-  margin:0;
-} */
+.portfolio__line {
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 79px 70px 20px;
+  background-color: #F8F8F8;
+}
+
+.footer__title{
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  padding-bottom: 20px;
+  color: #A0A0A0;
+}
+
+.footer__infobox{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  padding-top: 20px;
+}
+
+.footer__copyright{
+  margin: 0;
+}
+
+.footer__links{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+
+.footer__link{
+  text-decoration: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  margin-right: 20px;
+  color: black;
+}
+
