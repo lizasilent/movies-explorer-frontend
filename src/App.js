@@ -3,6 +3,7 @@ import mainLogo from "./images/logo.png";
 import myPhoto from "./images/avatar.jpg";
 import userLogo from "./images/main_icon.png";
 import testpic from "./images/testpic.png";
+import searchpic from "./images/search_icon.png"
 
 function App() {
   return (
@@ -128,9 +129,11 @@ function App() {
                 </div>
           </header>
           <div className="search">
-            <form action="" method="get" classname="search__bar">
-            <input name="search" placeholder="Фильм" type="search" classname="search__input"/>
-            <button type="submit" classname="search__button">Поиск</button>
+            <form action="" method="get" className="search__form">
+            <input name="search" placeholder="Фильм" type="search" className="search__input"/>
+            <img src={searchpic} alt="иконка поиска" className="grid__image"/>
+            <button type="submit" className="search__button">Поиск</button>
+
           </form>
           </div>
           <div className="grid">
@@ -138,7 +141,40 @@ function App() {
           <li className="grid__item">
         <img src={testpic} alt="" className="grid__image"/>
         <div className="grid__text-container">
+          <div className="grid__name-block">
           <p className="grid__text">33 слова о дизайне</p>
+          <button className="grid__save-btn grid__save-btn_saved" type="button"/>
+          </div>
+          <p className="grid__duration">33 hours</p>
+        </div>
+      </li>
+      <li className="grid__item">
+        <img src={testpic} alt="" className="grid__image"/>
+        <div className="grid__text-container">
+          <div className="grid__name-block">
+          <p className="grid__text">33 слова о дизайне</p>
+          <button className="grid__save-btn grid__save-btn_saved" type="button"/>
+          </div>
+          <p className="grid__duration">33 hours</p>
+        </div>
+      </li>
+      <li className="grid__item">
+        <img src={testpic} alt="" className="grid__image"/>
+        <div className="grid__text-container">
+          <div className="grid__name-block">
+          <p className="grid__text">33 слова о дизайне</p>
+          <button className="grid__save-btn grid__save-btn_saved" type="button"/>
+          </div>
+          <p className="grid__duration">33 hours</p>
+        </div>
+      </li>
+      <li className="grid__item">
+        <img src={testpic} alt="" className="grid__image"/>
+        <div className="grid__text-container">
+          <div className="grid__name-block">
+          <p className="grid__text">33 слова о дизайне</p>
+          <button className="grid__save-btn grid__save-btn_saved" type="button"/>
+          </div>
           <p className="grid__duration">33 hours</p>
         </div>
       </li>
