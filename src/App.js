@@ -3,7 +3,8 @@ import mainLogo from "./images/logo.png";
 import myPhoto from "./images/avatar.jpg";
 import userLogo from "./images/main_icon.png";
 import testpic from "./images/testpic.png";
-import searchpic from "./images/search_icon.png"
+import searchpic from "./images/search_icon.png";
+import radioicon from "./images/small-tumb_icon.png";
 
 function App() {
   return (
@@ -128,14 +129,25 @@ function App() {
                 <a href="" className="header__signup"><img src={userLogo}/></a>
                 </div>
           </header>
-          <div className="search">
-            <form action="" method="get" className="search__form">
-            <input name="search" placeholder="Фильм" type="search" className="search__input"/>
-            <img src={searchpic} alt="иконка поиска" className="grid__image"/>
-            <button type="submit" className="search__button">Поиск</button>
 
-          </form>
+
+          <div className="search">
+              <div className="search__form">
+              <div className="search__left-box">
+                <img src={searchpic} alt="иконка поиска" className="search__image"/>
+                <input name="search" placeholder="Фильм" type="search" className="search__input"/>
+                <button type="submit" className="search__button">Поиск</button>
+                </div>
+                <div className="search__right-box">
+                <img src={radioicon} alt="иконка поиска" className="search__image"/>
+                <p className="search__text">Короткометражки</p>
+                </div>
+            </div>
           </div>
+          <div className="portfolio__line"/>
+
+
+
           <div className="grid">
           <ul className="grid__template">
           <li className="grid__item">
