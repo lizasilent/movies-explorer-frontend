@@ -52,7 +52,7 @@ function App() {
               <div className="scale__visual">Back-end</div>
               <div className="scale__visual">Front-end</div>
               </div>
-              
+
             </div>
             <div className="techs">
             <h2 className="about__title">Технологии</h2>
@@ -73,13 +73,13 @@ function App() {
             <h2 className="about__title">Студентка</h2>
             <div className="about__line"/>
 
-            
+
               <div className="aboutMe__info">
               <div className="aboutMe__text">
                 <p className="aboutMe__name">Елизавета</p>
                 <p className="aboutMe__profession">Фронтенд-разработчица, 30 лет</p>
-                <p className="aboutMe__description">Живу в Петербурге, когда-то закончила филфак, а теперь руковожу книжным интернет-магазином. Очень люблю все что связано с наукой, литературой, музыкой, современной культурой. В Практикум сначала пошла чтобы глубже понять собственный сайт, но обучение оказалось таким интересным и сложным, что, надеюсь, я смогу применить это всё и в работе. 
-</p>
+                <p className="aboutMe__description">Живу в Петербурге, когда-то закончила филфак, а теперь руковожу книжным интернет-магазином. Очень люблю все что связано с наукой, литературой, музыкой, современной культурой. В Практикум сначала пошла чтобы глубже понять собственный сайт, но обучение оказалось таким интересным и сложным, что, надеюсь, я смогу применить это всё и в работе.
+                </p>
                 <div className="aboutMe__social">
                 <a href="https://www.facebook.com/lizaveta.silent/" className="aboutMe__link">Facebook</a>
                 <a href="https://github.com/lizasilent" className="aboutMe__link">Github</a>
@@ -98,7 +98,7 @@ function App() {
               <div className="portfolio__menu"><p className="portfolio__text">Одностраничное приложение</p><p><a href="#" className="portfolio__link">↗</a></p></div>
             </div>
           </main>
-          
+
           <footer className="footer">
 
           <div className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</div>
@@ -147,7 +147,7 @@ function App() {
               </div>
               <div className="portfolio__line"/>
           </div>
-         
+
 
 
 
@@ -193,12 +193,67 @@ function App() {
           <p className="grid__duration">33 hours</p>
         </div>
       </li>
-     
+
           </ul>
           </div>
           <div className="more">
           <button className="more__button" type="button">Еще</button>
           </div>
+
+          <div className="login">
+              <form className="login__form" type="submit">
+                <img alt='лого' src={mainLogo} className="login__logo"/>
+                <p className="login__header">Добро пожаловать!</p>
+
+                <label for="name"><p className="login__label">Имя</p></label>
+                <input name="name" className="login__input" type="email" required />
+                <span className="login__error login__error_is-active" id="description-error"/>
+
+                <label for="email"><p className="login__label">E-mail</p></label>
+                <input name="email" className="login__input" type="email" required />
+                <span className="login__error login__error_is-active" id="description-error"/>
+
+                <label for="password"><p className="login__label">Пароль</p></label>
+                <input name="password" className="login__input" type="password" required />
+                <span className="login__error login__error_is-active" id="description-error"/>
+
+                <button type="submit" className="login__button">Зарегистрироваться</button>
+                <div className="login__sign-in">Уже зарегистрированы?
+                <a href="#" className="login__link">Войти</a>
+                </div>
+              </form>
+          </div>
+
+          <div className="login">
+              <form className="login__form" type="submit">
+                <img alt='лого' src={mainLogo} className="login__logo"/>
+                <p className="login__header">Рады видеть!</p>
+
+                <label for="email"><p className="login__label">E-mail</p></label>
+                <input name="email" className="login__input" type="email" required />
+                <span className="login__error login__error_is-active" id="description-error"/>
+
+                <label for="password"><p className="login__label">Пароль</p></label>
+                <input name="password" className="login__input" type="password" required />
+                <span className="login__error login__error_is-active" id="description-error"/>
+
+                <button type="submit" className="login__button">Зарегистрироваться</button>
+                <div className="login__sign-in">Еще не зарегистрированы?
+                <a href="#" className="login__link">Регистрация</a>
+                </div>
+              </form>
+          </div>
+
+
+
+            <div>
+          <div className="not-found-page">
+          <p className="not-found-page__header"> 404 </p>
+          <p className="not-found-page__text"> Страница не найдена!
+         </p>
+         <a href="#" className="not-found-page__link"> Назад </a>
+          </div>
+            </div>
 
     </div>
   </div>
