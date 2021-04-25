@@ -4,7 +4,6 @@ import myPhoto from "./images/avatar.jpg";
 import userLogo from "./images/main_icon.png";
 import testpic from "./images/testpic.png";
 import searchpic from "./images/search_icon.png";
-import radioicon from "./images/small-tumb_icon.png";
 
 function App() {
   return (
@@ -21,7 +20,7 @@ function App() {
           </header>
           <main>
             <div className="promo">
-              <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
+              <h1 className="promo__title">Учебный проект студентки факультета Веб-разработки.</h1>
             </div>
             <div className="navigation">
                 <ul className="navigation__menu">
@@ -45,7 +44,7 @@ function App() {
                 </div>
             </div>
               <div className="about__scale">
-              <div className="scale__visual scale__visual_green">1 неделя</div>
+              <div className="scale__visual scale__visual_blue">1 неделя</div>
               <div className="scale__visual scale__visual_grey">4 недели</div>
               </div>
               <div className="about__scale scale__text">
@@ -75,18 +74,20 @@ function App() {
 
 
               <div className="aboutMe__info">
-              <div className="aboutMe__text">
-                <p className="aboutMe__name">Елизавета</p>
-                <p className="aboutMe__profession">Фронтенд-разработчица, 30 лет</p>
-                <p className="aboutMe__description">Живу в Петербурге, когда-то закончила филфак, а теперь руковожу книжным интернет-магазином. Очень люблю все что связано с наукой, литературой, музыкой, современной культурой. В Практикум сначала пошла чтобы глубже понять собственный сайт, но обучение оказалось таким интересным и сложным, что, надеюсь, я смогу применить это всё и в работе.
-                </p>
-                <div className="aboutMe__social">
-                <a href="https://www.facebook.com/lizaveta.silent/" className="aboutMe__link">Facebook</a>
-                <a href="https://github.com/lizasilent" className="aboutMe__link">Github</a>
+                <div className="aboutMe__text">
+                  <p className="aboutMe__name">Елизавета</p>
+                  <p className="aboutMe__profession">Фронтенд-разработчица, 30 лет</p>
+                  <p className="aboutMe__description">Живу в Петербурге, когда-то закончила филфак, а теперь руковожу книжным интернет-магазином. Очень люблю все что связано с наукой, литературой, музыкой, современной культурой. В Практикум сначала пошла чтобы глубже понять собственный сайт, но обучение оказалось таким интересным и сложным, что, надеюсь, я смогу применить это всё и в работе.
+                  </p>
+                  <div className="aboutMe__social">
+                  <a href="https://www.facebook.com/lizaveta.silent/" className="aboutMe__link">Facebook</a>
+                  <a href="https://github.com/lizasilent" className="aboutMe__link">Github</a>
+                  </div>
                 </div>
-              </div>
-              <img className="aboutMe__avatar" src={myPhoto} alt="аватар"></img>
-              </div>
+                <img className="aboutMe__avatar" src={myPhoto} alt="аватар"></img>
+                </div>
+
+
               </div>
 
             <div className="portfolio">
@@ -200,7 +201,7 @@ function App() {
           <button className="more__button" type="button">Еще</button>
           </div>
 
-          <div className="login">
+          {/* <div className="login">
               <form className="login__form" type="submit">
                 <img alt='лого' src={mainLogo} className="login__logo"/>
                 <p className="login__header">Добро пожаловать!</p>
@@ -244,6 +245,24 @@ function App() {
               </form>
           </div>
 
+          <div className="profile">
+              <div className="profile__form" type="submit">
+                    <p className="profile__header">Привет, Виталий!</p>
+
+                    <div className="profile__row">
+                    <p className="profile__text">Имя</p>
+                    <p className="profile__text">Виталий</p>
+                    </div>
+
+                    <div className="profile__row profile__row_invisible">
+                    <p className="profile__text">E-mail</p>
+                    <p className="profile__text">pochta@yandex.ru</p>
+                    </div>
+                    <button type="submit" className="profile__button">Редактировать</button>
+                    <a href="#" className="profile__link">Выйти из аккаунта</a>
+                </div>
+          </div>
+
 
 
             <div>
@@ -253,7 +272,7 @@ function App() {
          </p>
          <a href="#" className="not-found-page__link"> Назад </a>
           </div>
-            </div>
+            </div> */}
 
     </div>
   </div>
