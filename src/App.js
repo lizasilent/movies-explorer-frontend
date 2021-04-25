@@ -92,11 +92,11 @@ function App() {
 
             <div className="portfolio">
               <p className="portfolio__title">Портфолио</p>
-              <div className="portfolio__menu"><p className="portfolio__text">Статичный сайт</p><p><a href="#" className="portfolio__link">↗</a></p></div>
+              <div className="portfolio__menu"><p className="portfolio__text">Статичный сайт</p><a href="#" className="portfolio__link">↗</a></div>
               <div className="portfolio__line"/>
-              <div className="portfolio__menu"><p className="portfolio__text">Адаптивный сайт</p><p><a href="#" className="portfolio__link">↗</a></p></div>
+              <div className="portfolio__menu"><p className="portfolio__text">Адаптивный сайт</p><a href="#" className="portfolio__link">↗</a></div>
               <div className="portfolio__line"/>
-              <div className="portfolio__menu"><p className="portfolio__text">Одностраничное приложение</p><p><a href="#" className="portfolio__link">↗</a></p></div>
+              <div className="portfolio__menu"><p className="portfolio__text">Одностраничное приложение</p><a href="#" className="portfolio__link">↗</a></div>
             </div>
           </main>
 
@@ -197,11 +197,13 @@ function App() {
 
           </ul>
           </div>
+
+
           <div className="more">
           <button className="more__button" type="button">Еще</button>
           </div>
 
-          {/* <div className="login">
+          <div className="login">
               <form className="login__form" type="submit">
                 <img alt='лого' src={mainLogo} className="login__logo"/>
                 <p className="login__header">Добро пожаловать!</p>
@@ -272,7 +274,7 @@ function App() {
          </p>
          <a href="#" className="not-found-page__link"> Назад </a>
           </div>
-            </div> */}
+            </div>
 
     </div>
   </div>
