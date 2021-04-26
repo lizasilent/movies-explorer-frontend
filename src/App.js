@@ -18,6 +18,7 @@ function App() {
                   <button className="header__button">Войти</button>
                 </div>
           </header>
+
           <main>
             <div className="promo">
               <h1 className="promo__title">Учебный проект студентки факультета Веб-разработки.</h1>
@@ -114,21 +115,25 @@ function App() {
           </div>
 
           </footer>
-          <header className="header header_white">
-            <div className="header__logo">
-            <img alt='лого' src={mainLogo}/>
-            </div>
-            <div>
-            <div className="header__container">
-              <p className="header__signup">Фильмы</p>
-              <p className="header__signup">Сохраненные фильмы</p>
-              </div>
 
+          <header className="header header_white">
+              <div className="header__logo">
+              <img alt='лого' src={mainLogo}/>
+              </div>
+              <div>
+              <div className="header__burger-menu">
+                <span></span>
             </div>
-                <div className="header__container">
-                <p className="header__signup">Аккаунт</p>
-                <a href="" className="header__signup"><img src={userLogo}/></a>
+              <div className="header__container">
+                <a className="header__signup">Фильмы</a>
+                <a className="header__signup">Сохраненные фильмы</a>
                 </div>
+
+              </div>
+                  <div className="header__container">
+                  <a className="header__signup">Аккаунт</a>
+                  <a href="" className="header__signup"><img src={userLogo}/></a>
+                  </div>
           </header>
 
 
@@ -137,13 +142,12 @@ function App() {
                   <div className="search__left-box">
                     <img src={searchpic} alt="иконка поиска" className="search__image"/>
                     <input name="search" placeholder="Фильм" type="search" className="search__input"/>
-                    <button type="submit" className="search__button">Поиск</button>
+                    <button type="submit" className="search__button">Найти</button>
                     </div>
+                    <div className="search__line"></div>
                     <div className="search__right-box">
-
                     <input type="checkbox" name="toggle" id="toggle-button" className="switch__toggle-button" />
                     <label htmlFor="switch__toggle-button" className="switch__text">Короткометражки</label>
-
                   </div>
               </div>
               <div className="portfolio__line"/>
@@ -270,7 +274,7 @@ function App() {
             <div>
           <div className="not-found-page">
           <p className="not-found-page__header"> 404 </p>
-          <p className="not-found-page__text"> Страница не найдена!
+          <p className="not-found-page__text"> Страница не найдена
          </p>
          <a href="#" className="not-found-page__link"> Назад </a>
           </div>
