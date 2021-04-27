@@ -59,7 +59,7 @@ function App() {
             <div className="about__line"/>
             <h3 className="techs__title">7 технологий</h3>
             <p className="techs__text">На курсе веб-разработки мы освоили технологии, которые применили в дипломном проекте.</p>
-            <ul className="navigation__menu">
+            <ul className="navigation__menu navigation__menu_square">
             <li className="navigation__link_square">HTML</li>
             <li className="navigation__link_square">CSS</li>
             <li className="navigation__link_square">JS</li>
@@ -121,9 +121,9 @@ function App() {
               <img alt='лого' src={mainLogo}/>
               </div>
               <div>
-              <div className="header__burger-menu">
+              {/* <div className="header__burger-menu">
                 <span></span>
-            </div>
+            </div> */}
               <div className="header__container">
                 <a className="header__signup">Фильмы</a>
                 <a className="header__signup">Сохраненные фильмы</a>
