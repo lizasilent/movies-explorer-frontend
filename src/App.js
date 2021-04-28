@@ -150,7 +150,7 @@ function App() {
                     <label htmlFor="switch__toggle-button" className="switch__text">Короткометражки</label>
                   </div>
               </div>
-              <div className="portfolio__line"/>
+              <div className="portfolio__line portfolio__line_invisible"/>
           </div>
 
 
@@ -159,6 +159,16 @@ function App() {
           <div className="grid">
           <ul className="grid__template">
           <li className="grid__item">
+        <img src={testpic} alt="" className="grid__image"/>
+        <div className="grid__text-container">
+          <div className="grid__name-block">
+          <p className="grid__text">33 слова о дизайне</p>
+          <button className="grid__save-btn grid__save-btn_saved" type="button"/>
+          </div>
+          <p className="grid__duration">33 hours</p>
+        </div>
+      </li>
+      <li className="grid__item">
         <img src={testpic} alt="" className="grid__image"/>
         <div className="grid__text-container">
           <div className="grid__name-block">
