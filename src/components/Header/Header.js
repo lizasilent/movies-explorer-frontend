@@ -1,20 +1,33 @@
 /* eslint-disable no-lone-blocks */
 import React from "react";
-import "./Header.css"; // импортируем CSS-файл
+import { Link } from 'react-router-dom';
+import "./Header.css";
 import mainLogo from "../../images/logo.png";
-// import userLogo from "../../images/main_icon.png";
+import userLogo from "../../images/main_icon.png";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header header_white">
+      <Link to="/">
       <div className="header__logo">
         <img alt="лого" src={mainLogo} />
       </div>
+      </Link>
+
+      <div>
+        {/* <div className="header__burger-menu">
+      <span></span>
+  </div> */}{" "}
+
+        <div className="header__container">
+          <Link to="/movies" className="header__signup">Фильмы</Link>
+          <Link to="/saved-movies" className="header__signup">Сохраненные фильмы</Link>
+        </div>
+      </div>
       <div className="header__container">
-        <a href="#" className="header__signup">
-          Регистрация
-        </a>
-        <button className="header__button">Войти</button>
+        <Link to="/profile" href="" className="header__signup">
+          <img src={userLogo} />
+        </Link>
       </div>
     </header>
   );
@@ -22,25 +35,18 @@ function Header() {
 
 export default Header;
 
+// Тут ниже заккоментирован хедер для первой страницы, будет меняться в зависимости от логина
+
 {
-  /* <header className="header header_white">
+  /* <header className="header">
 <div className="header__logo">
   <img alt="лого" src={mainLogo} />
 </div>
-<div>
-  {/* <div className="header__burger-menu">
-      <span></span>
-  </div> */
+<div className="header__container">
+  <a href="#" className="header__signup">
+    Регистрация
+  </a>
+  <button className="header__button">Войти</button>
+</div>
+</header> */
 }
-//   <div className="header__container">
-//     <a className="header__signup">Фильмы</a>
-//     <a className="header__signup">Сохраненные фильмы</a>
-//   </div>
-// </div>
-// <div className="header__container">
-//   <a className="header__signup">Аккаунт</a>
-//   <a href="" className="header__signup">
-//     <img src={userLogo} />
-//   </a>
-// </div>
-// </header> */}

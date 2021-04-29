@@ -12,12 +12,20 @@ function Footer() {
         <p className="footer__copyright">© 2020</p>
         <ul className="footer__links">
           <li>
-            <a href="https://praktikum.yandex.ru/" className="footer__link">
+            <a
+              href="https://praktikum.yandex.ru/"
+              className="footer__link"
+              target="blank"
+            >
               Яндекс.Практикум
             </a>
           </li>
           <li>
-            <a href="https://github.com/lizasilent" className="footer__link">
+            <a
+              href="https://github.com/lizasilent"
+              className="footer__link"
+              target="blank"
+            >
               Github
             </a>
           </li>
@@ -25,6 +33,7 @@ function Footer() {
             <a
               href="https://www.facebook.com/lizaveta.silent/"
               className="footer__link"
+              target="blank"
             >
               Facebook
             </a>

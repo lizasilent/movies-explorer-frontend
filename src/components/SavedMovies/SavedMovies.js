@@ -1,14 +1,17 @@
 import React from "react";
 import "../MoviesCardList/MoviesCardList.css";
-import MoviesCard from "../MoviesCard/MoviesCard";
+import SearchForm from "../SearchForm/SearchForm";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import More from "../More/More";
 
 function SavedMovies() {
   return (
-    <div className="grid">
-      <ul className="grid__template">
-        <MoviesCard />
-      </ul>
-    </div>
+    <>
+      <SearchForm />
+      {/* <Preloader /> */}
+      <MoviesCardList />
+      <More />
+    </>
   );
 }
 

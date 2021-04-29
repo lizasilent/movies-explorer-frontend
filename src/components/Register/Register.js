@@ -1,12 +1,14 @@
 import React from "react";
 import "../Login/Login.css";
 import mainLogo from "../../images/logo.png";
+import { Link } from "react-router-dom";
 
 function Register() {
   return (
     <div className="login">
       <form className="login__form" type="submit">
-        <img alt="лого" src={mainLogo} className="login__logo" />
+      <Link to="/">
+        <img alt="лого" src={mainLogo} className="login__logo" /></Link>
         <p className="login__header">Добро пожаловать!</p>
 
         <label for="name">
@@ -46,9 +48,9 @@ function Register() {
         </button>
         <div className="login__sign-in">
           Уже зарегистрированы?
-          <a href="#" className="login__link">
+          <Link to="/signin" className="login__link">
             Войти
-          </a>
+          </Link>
         </div>
       </form>
     </div>
