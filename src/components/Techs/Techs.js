@@ -2,7 +2,8 @@ import React from 'react';
 import './Techs.css'
 
 function Techs() {
-  <div className="techs">
+  return (
+<div className="techs">
     <h2 className="about__title">Технологии</h2>
     <div className="about__line" />
     <h3 className="techs__title">7 технологий</h3>
@@ -19,7 +20,8 @@ function Techs() {
       <li className="navigation__link_square">Express.js</li>
       <li className="navigation__link_square">mongoDB</li>
     </ul>
-  </div>;
+  </div>
+  )
 
 }
 
