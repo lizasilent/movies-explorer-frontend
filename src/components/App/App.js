@@ -1,9 +1,9 @@
 import './App.css';
 import mainLogo from "../../images/logo.png";
-import myPhoto from "../../images/avatar.jpg";
 import testpic from "../../images/testpic.png";
 import searchpic from "../../images/search_icon.png";
 import Header from "../Header/Header.js";
+import Main from "../Main/Main.js";
 import Footer from "../Footer/Footer.js";
 
 function App() {
@@ -11,149 +11,8 @@ function App() {
     <div className="page">
       <div className="page__content">
        <Header/>
-
-        <main>
-          <div className="promo">
-            <h1 className="promo__title">
-              Учебный проект студентки факультета Веб-разработки.
-            </h1>
-          </div>
-          <div className="navigation">
-            <ul className="navigation__menu">
-              <li>
-                <a href="#" className="navigation__link">
-                  О проекте
-                </a>
-              </li>
-              <li>
-                <a href="#" className="navigation__link">
-                  Технологии
-                </a>
-              </li>
-              <li>
-                <a href="#" className="navigation__link">
-                  Студентка
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="about">
-            <h2 className="about__title">О проекте</h2>
-            <div className="about__line" />
-
-            <div className="columns">
-              <div className="column">
-                <p className="column__title">
-                  Дипломный проект включал 5 этапов
-                </p>
-                <p className="column__text">
-                  Составление плана, работу над бэкендом, вёрстку, добавление
-                  функциональности и финальные доработки.
-                </p>
-              </div>
-              <div className="column">
-                <p className="column__title">
-                  На выполнение диплома ушло 5 недель
-                </p>
-                <p className="column__text">
-                  У каждого этапа был мягкий и жёсткий дедлайн, которые нужно
-                  было соблюдать, чтобы успешно защититься.
-                </p>
-              </div>
-            </div>
-            <div className="about__scale">
-              <div className="scale__visual scale__visual_blue">1 неделя</div>
-              <div className="scale__visual scale__visual_grey">4 недели</div>
-            </div>
-            <div className="about__scale scale__text">
-              <div className="scale__visual">Back-end</div>
-              <div className="scale__visual">Front-end</div>
-            </div>
-          </div>
-          <div className="techs">
-            <h2 className="about__title">Технологии</h2>
-            <div className="about__line" />
-            <h3 className="techs__title">7 технологий</h3>
-            <p className="techs__text">
-              На курсе веб-разработки мы освоили технологии, которые применили в
-              дипломном проекте.
-            </p>
-            <ul className="navigation__menu navigation__menu_square">
-              <li className="navigation__link_square">HTML</li>
-              <li className="navigation__link_square">CSS</li>
-              <li className="navigation__link_square">JS</li>
-              <li className="navigation__link_square">React</li>
-              <li className="navigation__link_square">Git</li>
-              <li className="navigation__link_square">Express.js</li>
-              <li className="navigation__link_square">mongoDB</li>
-            </ul>
-          </div>
-          <div className="about-me">
-            <h2 className="about__title">Студентка</h2>
-            <div className="about__line" />
-
-            <div className="about-me__info">
-              <div className="about-me__text">
-                <p className="about-me__name">Елизавета</p>
-                <p className="about-me__profession">
-                  Фронтенд-разработчица, 30 лет
-                </p>
-                <p className="about-me__description">
-                  Живу в Петербурге, когда-то закончила филфак, а теперь
-                  руковожу книжным интернет-магазином. Очень люблю все что
-                  связано с наукой, литературой, музыкой, современной культурой.
-                  В Практикум сначала пошла чтобы глубже понять собственный
-                  сайт, но обучение оказалось таким интересным и сложным, что,
-                  надеюсь, я смогу применить это всё и в работе.
-                </p>
-                <div className="about-me__social">
-                  <a
-                    href="https://www.facebook.com/lizaveta.silent/"
-                    className="about-me__link"
-                  >
-                    Facebook
-                  </a>
-                  <a
-                    href="https://github.com/lizasilent"
-                    className="about-me__link"
-                  >
-                    Github
-                  </a>
-                </div>
-              </div>
-              <img
-                className="about-me__avatar"
-                src={myPhoto}
-                alt="аватар"
-              ></img>
-            </div>
-          </div>
-
-          <div className="portfolio">
-            <p className="portfolio__title">Портфолио</p>
-            <div className="portfolio__menu">
-              <p className="portfolio__text">Статичный сайт</p>
-              <a href="#" className="portfolio__link">
-                ↗
-              </a>
-            </div>
-            <div className="portfolio__line" />
-            <div className="portfolio__menu">
-              <p className="portfolio__text">Адаптивный сайт</p>
-              <a href="#" className="portfolio__link">
-                ↗
-              </a>
-            </div>
-            <div className="portfolio__line" />
-            <div className="portfolio__menu">
-              <p className="portfolio__text">Одностраничное приложение</p>
-              <a href="#" className="portfolio__link">
-                ↗
-              </a>
-            </div>
-          </div>
-        </main>
-<Footer/>
+       <Main/>
+      <Footer/>
 
         <div className="search">
           <div className="search__form">
