@@ -1,15 +1,15 @@
-import React from 'react';
-import '../MoviesCardList/MoviesCardList.css';
+import React from "react";
+import "../MoviesCardList/MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 function SavedMovies() {
-  return(
+  return (
     <div className="grid">
-          <ul className="grid__template">
-          <MoviesCard/>
-          </ul>
-        </div>
-  )
+      <ul className="grid__template">
+        <MoviesCard />
+      </ul>
+    </div>
+  );
 }
 
 export default SavedMovies;

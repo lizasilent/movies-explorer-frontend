@@ -8,26 +8,26 @@
 
 @media screen and (max-width: 999px) {
   .not-found-page {
-      padding: 408px 0 222px;
- }
+    padding: 408px 0 222px;
+  }
 }
 @media screen and (max-width: 523px) {
   .not-found-page {
-      padding: 329px 0 354px;
- }
-  .not-found-page__header{
-      font-size: 80px;
-      line-height: 97px;
-      margin: 0 0 10px 0;
- }
-  .not-found-page__text{
-      font-size: 12px;
-      line-height: 15px;
- }
-  .not-found-page__link{
-      font-size: 12px;
-      line-height: 15px;
- }
+    padding: 329px 0 354px;
+  }
+  .not-found-page__header {
+    font-size: 80px;
+    line-height: 97px;
+    margin: 0 0 10px 0;
+  }
+  .not-found-page__text {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .not-found-page__link {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }
 .not-found-page__header {
   font-style: normal;
@@ -48,7 +48,7 @@
   font-weight: normal;
   font-size: 14px;
   line-height: 17px;
-  color: #3456F3;
-  margin:0;
+  color: #3456f3;
+  margin: 0;
   text-decoration: none;
 }

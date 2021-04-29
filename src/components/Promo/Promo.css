@@ -1,6 +1,6 @@
-.promo{
+.promo {
   position: relative;
-  background-color: #DDDEE3;
+  background-color: #dddee3;
   background-image: url(../../images/main-landing_img.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -10,7 +10,7 @@
   text-align: center;
   padding: 184px 0 224px;
 }
-.promo__title{
+.promo__title {
   max-width: 730px;
   font-style: normal;
   font-weight: normal;
@@ -22,16 +22,16 @@
 
 @media screen and (max-width: 999px) {
   .promo {
-      padding: 326px 0 342px;
- }
+    padding: 326px 0 342px;
+  }
 }
 
 @media screen and (max-width: 523px) {
   .promo {
-      padding: 207px 10px 246px;
- }
-  .promo__title{
+    padding: 207px 10px 246px;
+  }
+  .promo__title {
     font-size: 31px;
     line-height: 39px;
-}
+  }
 }

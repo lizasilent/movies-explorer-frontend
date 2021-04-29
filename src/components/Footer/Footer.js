@@ -1,8 +1,8 @@
-import React from 'react';
-import './Footer.css'
+import React from "react";
+import "./Footer.css";
 
 function Footer() {
-  return(
+  return (
     <footer className="footer">
       <div className="footer__title">
         Учебный проект Яндекс.Практикум х BeatFilm.
@@ -17,10 +17,7 @@ function Footer() {
             </a>
           </li>
           <li>
-            <a
-              href="https://github.com/lizasilent"
-              className="footer__link"
-            >
+            <a href="https://github.com/lizasilent" className="footer__link">
               Github
             </a>
           </li>
@@ -35,8 +32,7 @@ function Footer() {
         </ul>
       </div>
     </footer>
-  )
-
+  );
 }
 
 export default Footer;

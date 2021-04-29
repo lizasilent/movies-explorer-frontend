@@ -1,11 +1,11 @@
-.grid__item{
+.grid__item {
   position: relative;
   border-radius: 10px;
   box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
   overflow: hidden;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
-.grid__text-container{
+.grid__text-container {
   position: relative;
   color: black;
   display: flex;
@@ -15,14 +15,14 @@
   padding: 14px 12px;
   margin-top: -5px;
 }
-.grid__name-block{
+.grid__name-block {
   position: relative;
   color: black;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-.grid__text{
+.grid__text {
   font-style: normal;
   font-weight: 500;
   font-size: 13px;
@@ -32,18 +32,18 @@
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 206px;
-  padding-bottom:10px
+  padding-bottom: 10px;
 }
-.grid__duration{
+.grid__duration {
   font-family: Inter;
   font-style: normal;
   font-weight: normal;
   font-size: 11px;
   line-height: 13px;
-  color:#A0A0A0;
-  margin:0;
+  color: #a0a0a0;
+  margin: 0;
 }
-.grid__save-btn{
+.grid__save-btn {
   border: none;
   background-color: white;
   background-image: url(../../images/save_icon.png);
@@ -54,31 +54,31 @@
   cursor: pointer;
   outline: none;
 }
-.grid__save-btn:hover{
+.grid__save-btn:hover {
   opacity: 0.8;
 }
-.grid__save-btn_saved{
+.grid__save-btn_saved {
   background-image: url(../../images/saved_icon.png);
   background-repeat: no-repeat;
   background-size: contain;
-  z-index:2;
+  z-index: 2;
 }
-.grid__save-btn_saved:hover{
+.grid__save-btn_saved:hover {
   opacity: 0.8;
 }
 
 @media screen and (max-width: 999px) {
-  .grid__image{
-      width: 100%;
- }
+  .grid__image {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 523px) {
-  .grid__image{
-      width: 100%;
- }
+  .grid__image {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 400px) {
-  .grid__image{
-      width: 100%;
- }
+  .grid__image {
+    width: 100%;
+  }
 }

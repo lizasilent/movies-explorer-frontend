@@ -1,13 +1,13 @@
-.more{
-  background-color: #FAFAFA;
+.more {
+  background-color: #fafafa;
   padding: 50px 0 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
 }
-.more__button{
-  background-color: #F4F4F4;
+.more__button {
+  background-color: #f4f4f4;
   border-radius: 6px;
   border-style: none;
   font-style: normal;
@@ -18,6 +18,6 @@
   height: 36px;
   cursor: pointer;
 }
-.more__button:hover{
+.more__button:hover {
   opacity: 0.8;
 }
