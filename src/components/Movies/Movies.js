@@ -7,13 +7,13 @@ import More from "../More/More";
 
 function Movies() {
   return (
-    <div>
+    <>
       <SearchForm />
       <Preloader />
       <MoviesCardList />
       <SavedMovies />
       <More />
-    </div>
+    </>
   );
 }
 
