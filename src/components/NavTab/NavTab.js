@@ -1,27 +1,30 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import "./NavTab.css";
+
+//Навигация примерная, заработает когда будет готов весь сайт
 
 function NavTab() {
   return (
-    <div className="navigation">
+    <nav className="navigation">
       <ul className="navigation__menu">
         <li>
-          <a href="#" className="navigation__link">
+          <Link to="/" className="navigation__link">
             О проекте
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="navigation__link">
+          <Link to="/techs" className="navigation__link">
             Технологии
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="navigation__link">
+          <Link to="/aboutme" className="navigation__link">
             Студентка
-          </a>
+          </Link>
         </li>
       </ul>
-    </div>
+    </nav>
   );
 }
 

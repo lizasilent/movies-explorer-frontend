@@ -11,6 +11,9 @@ import Profile from "../Profile/Profile.js";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
 import AboutProject from "../AboutProject/AboutProject.js";
 import SavedMovies from "../SavedMovies/SavedMovies.js";
+import Techs from "../Techs/Techs.js";
+import AboutMe from "../AboutMe/AboutMe.js";
+import NavTab from "../NavTab/NavTab.js";
 
 function App() {
   return (
@@ -36,6 +39,12 @@ function App() {
         </Route>
         <Route path="/signup">
           <Register />
+        </Route>
+        <Route exact path="/techs">
+          <Techs />
+        </Route>
+        <Route exact path="/aboutme">
+          <AboutMe />
         </Route>
         <Route path="/*">
           <NotFoundPage />
