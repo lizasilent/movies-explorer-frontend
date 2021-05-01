@@ -13,14 +13,13 @@ import AboutProject from "../AboutProject/AboutProject.js";
 import SavedMovies from "../SavedMovies/SavedMovies.js";
 import Techs from "../Techs/Techs.js";
 import AboutMe from "../AboutMe/AboutMe.js";
-import NavTab from "../NavTab/NavTab.js";
 
 function App() {
   return (
     <div className="page">
       <div className="page__content">
         <Header />
-        {/* <Main /> */}
+        <Main />
         <Switch>
         <Route exact path="/">
           <AboutProject />
