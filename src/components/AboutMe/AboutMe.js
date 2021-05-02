@@ -2,9 +2,10 @@ import React from "react";
 import "./AboutMe.css";
 import myPhoto from "../../images/avatar.jpg";
 
+
 function AboutMe() {
   return (
-    <div className="about-me">
+    <div className="about-me"  id="about-me">
       <h2 className="about__title">Студентка</h2>
       <div className="about__line" />
 

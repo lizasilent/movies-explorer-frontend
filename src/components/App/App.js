@@ -9,48 +9,42 @@ import Login from "../Login/Login.js";
 import Register from "../Register/Register.js";
 import Profile from "../Profile/Profile.js";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
-import AboutProject from "../AboutProject/AboutProject.js";
-import SavedMovies from "../SavedMovies/SavedMovies.js";
-import Techs from "../Techs/Techs.js";
-import AboutMe from "../AboutMe/AboutMe.js";
-import NavTab from "../NavTab/NavTab.js";
+
 
 function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header />
-        {/* <Main /> */}
-        <Switch>
-        <Route exact path="/">
-          <AboutProject />
+      <Switch>
+        <Route path="/" exact>
+          <Header />
+          <Main />
+          <Footer />
         </Route>
-        <Route path="/movies">
+        <Route path="/movies" exact>
+          <Header />
           <Movies />
+          <Footer />
         </Route>
-        <Route path="/saved-movies">
-          <SavedMovies />
+        <Route path="/saved-movies" exact>
+          <Header />
+          <Movies />
+          <Footer />
         </Route>
-        <Route path="/profile">
+        <Route path="/profile" exact>
+          <Header />
           <Profile />
         </Route>
-        <Route path="/signin">
+        <Route path="/signin" exact>
           <Login />
         </Route>
-        <Route path="/signup">
+        <Route path="/signup" exact>
           <Register />
         </Route>
-        <Route exact path="/techs">
-          <Techs />
-        </Route>
-        <Route exact path="/aboutme">
-          <AboutMe />
-        </Route>
-        <Route path="/*">
+        <Route path="*">
           <NotFoundPage />
         </Route>
-        </Switch>
-        <Footer />
+      </Switch>
       </div>
     </div>
   );

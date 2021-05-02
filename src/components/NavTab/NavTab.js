@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 import "./NavTab.css";
 
 //Навигация примерная, заработает когда будет готов весь сайт
@@ -9,19 +8,19 @@ function NavTab() {
     <nav className="navigation">
       <ul className="navigation__menu">
         <li>
-          <Link to="/" className="navigation__link">
+          <a href="#about" className="navigation__link">
             О проекте
-          </Link>
+          </a>{" "}
         </li>
         <li>
-          <Link to="/techs" className="navigation__link">
+          <a href="#techs" className="navigation__link">
             Технологии
-          </Link>
+          </a>{" "}
         </li>
         <li>
-          <Link to="/aboutme" className="navigation__link">
+          <a href="#about-me" className="navigation__link">
             Студентка
-          </Link>
+          </a>{" "}
         </li>
       </ul>
     </nav>

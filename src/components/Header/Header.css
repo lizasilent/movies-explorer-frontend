@@ -78,6 +78,11 @@
   align-self: center;
 }
 
+.header__account:hover {
+  text-decoration:underline;
+}
+
+
 .header__hamburger-menu {
   visibility: hidden;
 }
