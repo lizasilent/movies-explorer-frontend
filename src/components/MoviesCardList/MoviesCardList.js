@@ -2,14 +2,11 @@ import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-function MoviesCardList() {
+function MoviesCardList(cards) {
   return (
     <div className="grid">
       <ul className="grid__template">
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
+        <MoviesCard cards={cards} />
       </ul>
     </div>
   );

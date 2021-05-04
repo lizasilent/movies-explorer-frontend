@@ -4,12 +4,12 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import More from "../More/More";
 
-function Movies() {
+function Movies(cards) {
   return (
     <>
       <SearchForm />
       {/* <Preloader /> */}
-      <MoviesCardList />
+      <MoviesCardList cards={cards}/>
       <More />
     </>
   );

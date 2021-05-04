@@ -7,8 +7,9 @@ import moviesSavedCardIcon from "../../images/saved_icon.png";
 import deleteCardIcon from "../../images/delete_icon.png";
 
 
-function MoviesCard() {
+function MoviesCard(cards) {
 
+  console.log(cards);
 
   const { pathname } = useLocation();
   const isAdded = true; // Поменять на false для проверки
