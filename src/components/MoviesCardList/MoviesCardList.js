@@ -7,6 +7,9 @@ function MoviesCardList() {
     <div className="grid">
       <ul className="grid__template">
         <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
+        <MoviesCard />
       </ul>
     </div>
   );

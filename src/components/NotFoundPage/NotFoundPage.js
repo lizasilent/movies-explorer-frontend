@@ -1,6 +1,6 @@
 import React from "react";
 import "./NotFoundPage.css";
-import { useParams, useHistory, Link } from 'react-router-dom';
+import {  useHistory, Link } from 'react-router-dom';
 
 function NotFoundPage() {
 

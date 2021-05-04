@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
@@ -12,6 +12,7 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
 
 
 function App() {
+
   return (
     <div className="page">
       <div className="page__content">

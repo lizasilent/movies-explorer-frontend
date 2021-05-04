@@ -43,10 +43,9 @@
   color: #a0a0a0;
   margin: 0;
 }
-.grid__save-btn {
+.grid__icon {
   border: none;
   background-color: white;
-  background-image: url(../../images/save_icon.png);
   background-repeat: no-repeat;
   background-size: contain;
   min-width: 16px;
@@ -54,18 +53,35 @@
   cursor: pointer;
   outline: none;
 }
-.grid__save-btn:hover {
+.grid__icon:hover {
   opacity: 0.8;
 }
-.grid__save-btn_saved {
+
+/* .grid__save-btn_saved {
   background-image: url(../../images/saved_icon.png);
   background-repeat: no-repeat;
   background-size: contain;
+  min-width: 16px;
+  height: 16px;
   z-index: 2;
 }
 .grid__save-btn_saved:hover {
   opacity: 0.8;
 }
+
+.grid__delete-btn {
+  background-image: url(../../images/close_icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 16px;
+  height: 16px;
+  z-index: 2;
+}
+.grid__delete-btn:hover {
+  opacity: 0.8;
+} */
+
+
 
 @media screen and (max-width: 999px) {
   .grid__image {
