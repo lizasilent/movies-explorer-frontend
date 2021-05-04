@@ -57,30 +57,6 @@
   opacity: 0.8;
 }
 
-/* .grid__save-btn_saved {
-  background-image: url(../../images/saved_icon.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 16px;
-  height: 16px;
-  z-index: 2;
-}
-.grid__save-btn_saved:hover {
-  opacity: 0.8;
-}
-
-.grid__delete-btn {
-  background-image: url(../../images/close_icon.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 16px;
-  height: 16px;
-  z-index: 2;
-}
-.grid__delete-btn:hover {
-  opacity: 0.8;
-} */
-
 
 
 @media screen and (max-width: 999px) {

@@ -14,7 +14,7 @@ function MoviesCard() {
   const isAdded = true; // Поменять на false для проверки
   //Если фильм добавили в избранное
   const moviesIcon = (isAdded ? moviesIconCard : moviesSavedCardIcon)
-  // Если на странице общего поиска, то берем иконку определенную на строчке выше, если нет, то иконку удаления
+  //  В зависимости от страницы карточек отображаем иконку "добавить" или иконку "удалить"
   const cardIcon = (pathname === "/movies" ? moviesIcon : deleteCardIcon)
 
 
