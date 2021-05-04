@@ -16,6 +16,9 @@
   padding: 0 30px;
   margin-bottom: 69px;
 }
+.search__form:hover {
+  box-shadow: 5px 5px 10px rgba(57, 44, 238, 0.5);
+}
 .input {
   font-style: normal;
   font-weight: normal;
@@ -204,9 +207,9 @@
     position: relative;
     justify-content: space-between;
     flex-direction: column;
-    padding: 25px 19px 0 19px;
-    height: 72px;
-    margin-bottom: 0;
+    padding: 20px 19px 0 19px;
+    max-height: 50px;
+    margin: 0;
   }
   .search__button {
     width: 80px;

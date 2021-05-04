@@ -6,7 +6,7 @@ function MoviesCard() {
   return (
     <>
       <li className="grid__item">
-        <img src={testpic} alt="" className="grid__image" />
+        <img src={testpic} alt="изображение фильма" className="grid__image" />
         <div className="grid__text-container">
           <div className="grid__name-block">
             <p className="grid__text">33 слова о дизайне</p>
@@ -19,7 +19,7 @@ function MoviesCard() {
         </div>
       </li>
       <li className="grid__item">
-        <img src={testpic} alt="" className="grid__image" />
+        <img src={testpic} alt="изображение фильма" className="grid__image" />
         <div className="grid__text-container">
           <div className="grid__name-block">
             <p className="grid__text">33 слова о дизайне</p>
@@ -32,7 +32,7 @@ function MoviesCard() {
         </div>
       </li>
       <li className="grid__item">
-        <img src={testpic} alt="" className="grid__image" />
+        <img src={testpic} alt="изображение фильма" className="grid__image" />
         <div className="grid__text-container">
           <div className="grid__name-block">
             <p className="grid__text">33 слова о дизайне</p>
@@ -45,7 +45,7 @@ function MoviesCard() {
         </div>
       </li>
       <li className="grid__item">
-        <img src={testpic} alt="" className="grid__image" />
+        <img src={testpic} alt="изображение фильма" className="grid__image" />
         <div className="grid__text-container">
           <div className="grid__name-block">
             <p className="grid__text">33 слова о дизайне</p>

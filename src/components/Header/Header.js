@@ -29,7 +29,7 @@ function Header() {
           Аккаунт
         </Link>
         <Link to="/profile" className="header__link">
-          <img src={userLogo} alt="иконка" className="header__icon" />
+          <img src={userLogo} alt="иконка [хедера" className="header__icon" />
         </Link>
 
         <div className="header__hamburger-menu">

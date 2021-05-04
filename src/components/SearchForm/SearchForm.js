@@ -13,6 +13,7 @@ function SearchForm() {
             placeholder="Фильм"
             type="search"
             className="search__input"
+            required
           />
           <button type="submit" className="search__button">
             Найти
