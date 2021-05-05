@@ -2,13 +2,14 @@ import React from "react";
 import "../Login/Login.css";
 import mainLogo from "../../images/logo.png";
 import { Link } from "react-router-dom";
-import Validation from "../../helpers/Validation";
+import { Validation, validationTexts} from "../../helpers/Validation";
+
 
 function Register({ handleRegister, registrationError }) {
 
   const formValidation = Validation();
   const {email, password, name} = formValidation.values;
-  const {values, onFocus, handleChange, isFocused, errors} = Validation();
+  const {values, handleChange, errors, isValid, resetForm, onFocus, isFocused, setValues} = Validation();
 
   const submitHandle = (event) => {
     event.preventDefault();
@@ -31,18 +32,14 @@ function Register({ handleRegister, registrationError }) {
         </label>
         <input name="name" className="login__input" type="name" required />
         <span
-          className="login__error login__error_is-active"
-          id="description-error"
-        />
+          className="login__error">{isFocused && errors.name}</span>
 
         <label for="email">
           <p className="login__label">E-mail</p>
         </label>
         <input name="email" className="login__input" type="email" required />
         <span
-          className="login__error login__error_is-active"
-          id="description-error"
-        />
+          className="login__error">{isFocused && errors.email}</span>
 
         <label for="password">
           <p className="login__label">Пароль</p>
@@ -54,13 +51,12 @@ function Register({ handleRegister, registrationError }) {
           required
         />
         <span
-          className="login__error login__error_is-active"
-          id="description-error"
-        />
+          className="login__error">{isFocused && errors.password}</span>
 
-        <button type="submit" className="login__button">
+        <button type="submit" className="login__button" disabled={!isValid}>
           Зарегистрироваться
         </button>
+        {registrationError && <p className='login__error'>Ошибка регистрации</p>}
         <div className="login__sign-in">
           Уже зарегистрированы?
           <Link to="/signin" className="login__link">

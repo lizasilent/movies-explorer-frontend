@@ -2,12 +2,13 @@ import React from "react";
 import "./Login.css";
 import mainLogo from "../../images/logo.png";
 import { Link } from "react-router-dom";
-import Validation from "../../helpers/Validation";
+import { Validation, validationTexts} from "../../helpers/Validation";
 
 function Login({handleLogin, loginError}) {
 
   const formValidation = Validation();
   const {email, password} = formValidation.values;
+  const {values, handleChange, errors, isValid, resetForm, onFocus, isFocused, setValues} = Validation();
 
   const submitHandle = (event) => {
     event.preventDefault();
@@ -26,11 +27,12 @@ function Login({handleLogin, loginError}) {
         <label for="email">
           <p className="login__label">E-mail</p>
         </label>
-        <input name="email" className="login__input" type="email" required />
+        <input name="email" className="login__input" type="email" required value={values.email || ''}
+        onFocus={onFocus}
+        onChange={handleChange}
+        minLength="2" />
         <span
-          className="login__error login__error_is-active"
-          id="description-error"
-        />
+          className="login__error">{isFocused && errors.email}</span>
 
         <label for="password">
           <p className="login__label">Пароль</p>
@@ -42,11 +44,9 @@ function Login({handleLogin, loginError}) {
           required
         />
         <span
-          className="login__error login__error_is-active"
-          id="description-error"
-        />
+          className="login__error">{isFocused && errors.password}</span>
 
-        <button type="submit" className="login__button">
+        <button type="submit" className="login__button" >
           Зарегистрироваться
         </button>
         <div className="login__sign-in">

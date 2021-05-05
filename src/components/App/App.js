@@ -159,11 +159,9 @@ function App() {
           <Route path="/signup" exact>
             <Register handleRegister={handleRegister} registrationError={registrationError} />
           </Route>
-          {isLogin && (
           <Route path="*">
             <NotFoundPage />
           </Route>
-)}
 
       </Switch>
       </CurrentUserContext.Provider>
