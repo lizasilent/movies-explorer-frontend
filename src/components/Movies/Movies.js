@@ -20,7 +20,7 @@ function Movies({isLogin}) {
   const [visibilityMoviesList, setVisibilityMoviesList] = React.useState('');
   const [isPreloaderOpen,  setIsPreloaderOpen] = React.useState('');
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [visibilityBtnYet, setVisibilityBtnYet] = React.useState('movies__button_hidden')
+  const [visibilityBtnYet, setVisibilityBtnYet] = React.useState('movies__button_hidden');
   const [isShortFilms, setIsShortFilms] = React.useState(false);
 
 
@@ -125,7 +125,6 @@ function Movies({isLogin}) {
       setVisibilityMoviesList('movies_visibility')
       setIsPreloaderOpen('')
     }
-
   }
 
   function addMovie(movie) {

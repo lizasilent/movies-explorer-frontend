@@ -23,13 +23,6 @@ class MainApi {
     .then(response => this._checkRequestResult(response));
   }
 
-  logout() {
-    return fetch(`${this._baseUrl}/signout `, {
-      method: 'POST',
-      headers: this._headers,
-    })
-    .then(response => this._checkRequestResult(response));
-  }
 
   register(email, password, name) {
     return fetch(`${this._baseUrl}/signup`, {
@@ -59,6 +52,15 @@ class MainApi {
       })
   }
 
+  logout() {
+    return fetch(`${this._baseUrl}/signout `, {
+      method: 'POST',
+      headers: this._headers,
+    })
+    .then(response => this._checkRequestResult(response));
+  }
+
+  
   updateHeaders() {
     this._headers = {
       'Content-Type': 'application/json',
