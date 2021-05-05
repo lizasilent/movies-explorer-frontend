@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
@@ -9,122 +9,161 @@ import Login from "../Login/Login.js";
 import Register from "../Register/Register.js";
 import Profile from "../Profile/Profile.js";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
-import mainApi from '../../utils/MainApi.js';
-import moviesApi from "../../utils/MoviesApi.js";
+import MainApi from '../../utils/MainApi.js';
+import MoviesApi from "../../utils/MoviesApi.js";
+import CurrentUserContext from '../../context/CurrentUserContext';
 
 
 function App() {
 
-  // const history = useHistory();
-  // const [loggedIn, setLoggedIn] = React.useState(false);
-  // const [cards, setCards] = React.useState([]);
-  // const [email, setEmail] = React.useState('');
+  const history = useHistory();
+  const [currentUser, setCurrentUser] = React.useState({});
+  const [registrationError, setRegisteredError] = React.useState(false)
+  const [loginError, setLoginError] = React.useState(false)
+  const [isLogin, setIsLogin] = React.useState(false)
+  const [isEditError, setIsEditError] = React.useState(false);
+  const [isEditDone, setIsEditDone] = React.useState(false);
 
+  function isLoggedInCheck() {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      MainApi.getInfo()
+      .then(userInfo=>{
+        if(userInfo) {
+          setCurrentUser(userInfo.data);
+          setIsLogin(true);
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
 
-  // React.useEffect(() => {
-  //   const jwt = localStorage.getItem('jwt');
-  //   if (jwt) {
-  //     mainApi.getContent(jwt)
-  //       .then((res) => {
-  //         setLoggedIn(true);
-  //         setEmail(res.data.email);
-  //         history.push('/');
-  //       })
-  //       .catch(err => console.log(err));
-  //   }
-  // }, [history]);
+    }
+  };
 
-  // const handleLogin = (email, password) => {
-  //   mainApi.authorize(email, password)
-  //   .then(() =>
-  //   {
-  //       setEmail(email);
-  //       setLoggedIn(true);
-  //       history.push('/');
-  //     })
-  //     .catch((err) => console.log(err));
+  React.useEffect(() => {
+    isLoggedInCheck();
+  }, []);
 
-  // }
+  React.useEffect(() => {
+    if(isLogin) {
+      MainApi.getInfo()
+        .then(userInfo=>{
+          if(userInfo) {
+            setCurrentUser(userInfo.data);
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+    }
+  }, []);
 
-  // const handleRegister = (email, password, name) => {
-  //   mainApi.register(email, password, name)
-  //   .then((res) => {
-  //     if (res.status === 201 || res.status === 200) {
-  //       history.push('/sign-in');
-  //   }
+  function handleLogin(email,password) {
+    MainApi.login(email, password)
+      .then((data) => {
+        if (data) {
+          setIsLogin(true);
+          history.push("/movies");
+        }
+      })
+      .catch(err=>{
+        setLoginError(true);
+        console.log(err);
+      });
 
-  //   if (res.status === 400) {
-  //     console.log("Такой email уже существует")
-  //   }
-  // }).catch((err) => {
-  // console.log("Ошибка регистрации: " + err);
-  // })}
+  };
 
-  // const handleLogout = () => {
+  function handleRegister(email, password, name) {
+    MainApi.register(email, password, name)
+      .then(data => {
+        if(data) {
+          handleLogin(email,password);
+          history.push("/signin");
+        }
+      })
+      .catch(() => {
+        setRegisteredError(true);
+      });
+  };
 
-  //   setLoggedIn(false);
-  //   localStorage.removeItem('jwt');
-  //   setEmail('');
-  //   history.push('/sign-in');
-  // }
+  function handleLogout() {
+      history.push('/');
+      setIsLogin(false);
+      localStorage.clear();
+  };
 
-  // // Стейт, отвечающий за данные текущего пользователя
-  // const [currentUser, setCurrentUser] = React.useState({});
+  function editProfile(name, email) {
 
-  //   React.useEffect(() => {
-  //     mainApi.getUserData().then((user) => setCurrentUser(user.data))
-  //     .catch((err) => {
-  //         console.log("Не загрузился юзер: " + err);
-  //     });
-  //   }, []);
-
-  // //Карточки с фильмами
-  // React.useEffect(() => {
-
-  //   moviesApi.getInitialMovies().then(moviesList => setCards(moviesList)
-  //     ).catch((err) => {
-  //         console.log("Не загрузились карточки фильмов: " + err);
-  //     });
-  //   }, []);
-
-
-
-
+    MainApi.setInfo(name, email)
+      .then((info) => {
+      setCurrentUser(info);
+      setIsEditDone(true);
+      setIsEditError(false);
+      setTimeout(()=>{
+        setIsEditDone(false);
+      }, 4000);
+    })
+    .catch(() => {
+      setIsEditError(true);
+    })
+  };
 
 
   return (
     <div className="page">
       <div className="page__content">
+      <CurrentUserContext.Provider value={currentUser}>
       <Switch>
-        <Route path="/" exact>
-          <Header />
-          <Main />
-          <Footer />
-        </Route>
-        <Route path="/movies" exact>
-          <Header />
-          <Movies cards={cards} />
-          <Footer />
-        </Route>
-        <Route path="/saved-movies" exact>
-          <Header />
-          <Movies />
-          <Footer />
-        </Route>
-        <Route path="/profile" exact>
-          <Header />
-          <Profile />
-        </Route>
-        <Route path="/signin" exact>
-          <Login />
-        </Route>
-        <Route path="/signup" exact>
-          <Register />
-        </Route>
-        <Route path="*">
-          <NotFoundPage />
-        </Route>
+      <Route path="/" exact>
+            <Header isLogin={isLogin} />
+            <Main />
+            <Footer />
+            </Route>
+      {isLogin && (
+          <ProtectedRoute
+            path="/movies"
+            exact
+            component={Movies}
+            isLogin={isLogin}
+            currentUser={currentUser}
+          />
+)}
+          {isLogin && (
+          <ProtectedRoute
+            path="/saved-movies"
+            exact
+            component={Movies}
+            isLogin={isLogin}
+            currentUser={currentUser}
+          />
+)}
+          {isLogin && (
+          <ProtectedRoute
+            path="/profile"
+            exact
+            component={Profile}
+            handleLogout={handleLogout}
+            editProfile={editProfile}
+            isLogin={isLogin}
+            currentUser={currentUser}
+            isEditError={isEditError}
+            isEditDone={isEditDone}
+          />
+)}
+          <Route path="/signin" exact>
+            <Login handleLogin={handleLogin} loginError={loginError} />
+          </Route>
+          <Route path="/signup" exact>
+            <Register handleRegister={handleRegister} registrationError={registrationError} />
+          </Route>
+          {isLogin && (
+          <Route path="*">
+            <NotFoundPage />
+          </Route>
+)}
+
       </Switch>
+      </CurrentUserContext.Provider>
       </div>
     </div>
   );
