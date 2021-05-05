@@ -1,0 +1,75 @@
+.grid__item {
+  position: relative;
+  border-radius: 10px;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.grid__text-container {
+  position: relative;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding: 14px 12px;
+  margin-top: -5px;
+}
+.grid__name-block {
+  position: relative;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.grid__text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 206px;
+  padding-bottom: 10px;
+}
+.grid__duration {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #a0a0a0;
+  margin: 0;
+}
+.grid__icon {
+  border: none;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 16px;
+  height: 16px;
+  cursor: pointer;
+  outline: none;
+}
+.grid__icon:hover {
+  opacity: 0.8;
+}
+
+
+@media screen and (max-width: 999px) {
+  .grid__image {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 523px) {
+  .grid__image {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .grid__image {
+    width: 100%;
+  }
+}
