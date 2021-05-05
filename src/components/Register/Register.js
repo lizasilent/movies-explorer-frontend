@@ -2,11 +2,26 @@ import React from "react";
 import "../Login/Login.css";
 import mainLogo from "../../images/logo.png";
 import { Link } from "react-router-dom";
+import Validation from "../../helpers/Validation";
 
-function Register() {
+function Register({ handleRegister, registrationError }) {
+
+  const formValidation = Validation();
+  const {email, password, name} = formValidation.values;
+  const {values, onFocus, handleChange, isFocused, errors} = Validation();
+
+  const submitHandle = (event) => {
+    event.preventDefault();
+    handleRegister(email, password, name);
+    formValidation.resetForm();
+  }
+
+
   return (
     <div className="login">
-      <form className="login__form" type="submit">
+      <form className="login__form" type="submit" formName="register" registrationError={registrationError}
+          submitHandle={submitHandle}
+          validation={formValidation}>
       <Link to="/">
         <img alt="лого" src={mainLogo} className="login__logo" /></Link>
         <p className="login__header">Добро пожаловать!</p>
@@ -14,7 +29,7 @@ function Register() {
         <label for="name">
           <p className="login__label">Имя</p>
         </label>
-        <input name="name" className="login__input" type="email" required />
+        <input name="name" className="login__input" type="name" required />
         <span
           className="login__error login__error_is-active"
           id="description-error"

@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import "./App.css";
 import Header from "../Header/Header.js";
 import Main from "../Main/Main.js";
@@ -10,7 +11,6 @@ import Register from "../Register/Register.js";
 import Profile from "../Profile/Profile.js";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
 import MainApi from '../../utils/MainApi.js';
-import MoviesApi from "../../utils/MoviesApi.js";
 import CurrentUserContext from '../../context/CurrentUserContext';
 
 
@@ -18,11 +18,14 @@ function App() {
 
   const history = useHistory();
   const [currentUser, setCurrentUser] = React.useState({});
-  const [registrationError, setRegisteredError] = React.useState(false)
-  const [loginError, setLoginError] = React.useState(false)
-  const [isLogin, setIsLogin] = React.useState(false)
-  const [isEditError, setIsEditError] = React.useState(false);
+  const [isLogin, setIsLogin] = React.useState(false);
   const [isEditDone, setIsEditDone] = React.useState(false);
+
+  // Ошибки логина, регистрации и редактирования инфы
+  const [loginError, setLoginError] = React.useState(false);
+  const [isEditError, setIsEditError] = React.useState(false);
+  const [registrationError, setRegisteredError] = React.useState(false);
+
 
   function isLoggedInCheck() {
     const jwt = localStorage.getItem('jwt');
@@ -115,7 +118,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
       <Switch>
       <Route path="/" exact>
-            <Header isLogin={isLogin} />
+            <Header isLogin={isLogin} handleLogout={handleLogout} />
             <Main />
             <Footer />
             </Route>
