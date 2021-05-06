@@ -80,7 +80,7 @@ function App() {
     MainApi.register(email, password, name)
       .then(data => {
         if(data) {
-          handleLogin(email, password);
+          // handleLogin(email, password);
           history.push("/signin");
         }
       })
@@ -119,7 +119,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
       <Switch>
       <Route path="/" exact>
-            <Header isLogin={isLogin} handleLogout={handleLogout} />
+            <Header isLogin={isLogin} />
             <Main />
             <Footer />
             </Route>
@@ -160,7 +160,7 @@ function App() {
           <Route path="/signup" exact>
             <Register handleRegister={handleRegister} registrationError={registrationError} />
           </Route>
-          <Route path="*">
+          <Route path="/*">
             <NotFoundPage />
           </Route>
 

@@ -6,16 +6,18 @@ import SearchForm from "../SearchForm/SearchForm";
 import Preloader from "../Preloader/Preloader";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import More from "../More/More";
-// import Header from "../Header/Header";
-// import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function Movies() {
   return (
     <>
+      <Header />
       <SearchForm />
       {/* <Preloader /> */}
       <MoviesCardList />
       <More />
+    <Footer />
     </>
   );
 }
