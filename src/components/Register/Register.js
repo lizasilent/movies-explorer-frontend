@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../Login/Login.css";
 import mainLogo from "../../images/logo.png";
-import { Link } from "react-router-dom";
-import { Validation, validationTexts} from "../../helpers/Validation";
+import Validation from "../../helpers/Validation";
+import Form from "../Form/Form";
 
 
 function Register({ handleRegister, registrationError }) {
 
   const formValidation = Validation();
   const {email, password, name} = formValidation.values;
-  const {values, handleChange, errors, isValid, resetForm, onFocus, isFocused, setValues} = Validation();
+  const {values, onFocus, handleChange, isFocused, errors} = formValidation;
 
   const submitHandle = (event) => {
     event.preventDefault();
@@ -20,49 +21,39 @@ function Register({ handleRegister, registrationError }) {
 
   return (
     <div className="login">
-      <form className="login__form" type="submit" formName="register" registrationError={registrationError}
+      <form className="login__form" type="submit" formName="register"
           submitHandle={submitHandle}
           validation={formValidation}>
       <Link to="/">
         <img alt="лого" src={mainLogo} className="login__logo" /></Link>
         <p className="login__header">Добро пожаловать!</p>
-
-        <label for="name">
+        <label htmlFor="name">
           <p className="login__label">Имя</p>
         </label>
-        <input name="name" className="login__input" type="name" required />
-        <span
-          className="login__error">{isFocused && errors.name}</span>
-
-        <label for="email">
-          <p className="login__label">E-mail</p>
-        </label>
-        <input name="email" className="login__input" type="email" required />
-        <span
-          className="login__error">{isFocused && errors.email}</span>
-
-        <label for="password">
-          <p className="login__label">Пароль</p>
-        </label>
         <input
-          name="password"
-          className="login__input"
-          type="password"
-          required
+        name="name"
+        className={`login__input ${errors.name && 'login__error'}`}
+        type="text"
+        required
+        value={values.name || ""}
+        onFocus={onFocus}
+        onChange={handleChange}
+        minLength="2"
+      />
+      <span className="login__error">{isFocused && errors.name}</span>
+      <Form
+          submitText={{
+              buttonText: "Зарегистрироваться",
+              promt: "Уже зарегистрированы?",
+              route: "/signin",
+              linkText: "Войти"
+            }}
+          registrationError={registrationError}
+          submitHandle={submitHandle}
+          validation={formValidation}
+          formName="register"
         />
-        <span
-          className="login__error">{isFocused && errors.password}</span>
 
-        <button type="submit" className="login__button" disabled={!isValid}>
-          Зарегистрироваться
-        </button>
-        {registrationError && <p className='login__error'>Ошибка регистрации</p>}
-        <div className="login__sign-in">
-          Уже зарегистрированы?
-          <Link to="/signin" className="login__link">
-            Войти
-          </Link>
-        </div>
       </form>
     </div>
   );
