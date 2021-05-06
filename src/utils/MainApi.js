@@ -60,7 +60,7 @@ class MainApi {
     .then(response => this._checkRequestResult(response));
   }
 
-  
+
   updateHeaders() {
     this._headers = {
       'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: 'https://api.movies.lizasilent.nomoredomains.monster/',
+  baseUrl: 'https://api.movies.lizasilent.nomoredomains.monster',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `${localStorage.getItem('jwt')}`

@@ -80,11 +80,12 @@ function App() {
     MainApi.register(email, password, name)
       .then(data => {
         if(data) {
-          handleLogin(email,password);
+          handleLogin(email, password);
           history.push("/signin");
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         setRegisteredError(true);
       });
   };

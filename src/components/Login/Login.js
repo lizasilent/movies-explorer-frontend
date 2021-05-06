@@ -17,8 +17,8 @@ function Login({handleLogin, loginError}) {
   }
 
   return (
-    <div className="login">
-      <form className="login__form" type="submit"  formName="login" submitHandle={submitHandle} loginError={loginError}>
+    <section className="login">
+      <div className="login__form">
       <Link to="/">
         <img alt="лого" src={mainLogo} className="login__logo" /></Link>
         <p className="login__header">Рады видеть!</p>
@@ -30,11 +30,11 @@ function Login({handleLogin, loginError}) {
             }}
           submitHandle={submitHandle}
           validation={formValidation}
-          formName="login"
-          loginError={loginError}/>
+          loginError={loginError}
+          formName="login"/>
 
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
 

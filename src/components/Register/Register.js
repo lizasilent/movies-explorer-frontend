@@ -20,27 +20,12 @@ function Register({ handleRegister, registrationError }) {
 
 
   return (
-    <div className="login">
-      <form className="login__form" type="submit" formName="register"
-          submitHandle={submitHandle}
-          validation={formValidation}>
+    <section className="login">
+      <div className="login__form">
       <Link to="/">
         <img alt="лого" src={mainLogo} className="login__logo" /></Link>
         <p className="login__header">Добро пожаловать!</p>
-        <label htmlFor="name">
-          <p className="login__label">Имя</p>
-        </label>
-        <input
-        name="name"
-        className={`login__input ${errors.name && 'login__error'}`}
-        type="text"
-        required
-        value={values.name || ""}
-        onFocus={onFocus}
-        onChange={handleChange}
-        minLength="2"
-      />
-      <span className="login__error">{isFocused && errors.name}</span>
+
       <Form
           submitText={{
               buttonText: "Зарегистрироваться",
@@ -52,10 +37,28 @@ function Register({ handleRegister, registrationError }) {
           submitHandle={submitHandle}
           validation={formValidation}
           formName="register"
+          children={
+            <>
+            <label htmlFor="name">
+            <p className="login__label">Имя</p>
+          </label>
+            <input
+            name="name"
+            className={`login__input ${errors.name && 'login__error'}`}
+            type="text"
+            required
+            value={values.name || ""}
+            onFocus={onFocus}
+            onChange={handleChange}
+            minLength="2"
+          />
+          <span className="login__error">{isFocused && errors.name}</span>
+          </>
+          }
         />
 
-      </form>
-    </div>
+      </div>
+    </section>
   );
 }
 

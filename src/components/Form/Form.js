@@ -48,23 +48,19 @@ function Form({
         value={values.password || ''}
         onFocus={onFocus}
         onChange={handleChange}
+        minLength="2"
       />
       <span className="login__error">{isFocused && errors.password}</span>
-
-      <button type="submit" className="login__button">
+      <button type="submit" className="login__button" disabled={!isValid}>
       {submitText.buttonText}
       </button>
-      {registrationError && <p className='login__error'>Произошла ошибка при регистрации</p>}
+      {registrationError && <p className='login__error'>Ошибка регистрации</p>}
       <div className="login__sign-in">
         {`${submitText.promt} `}
         <Link className="login__link" to={submitText.route}>{submitText.linkText}</Link>
+
       </div>
-      {/* <div className="login__sign-in">
-        Еще не зарегистрированы?
-        <Link to="/signup" className="login__link">
-          Регистрация
-        </Link>
-      </div> */}
+
       </form>
   );
 }
