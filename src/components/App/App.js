@@ -27,6 +27,7 @@ function App() {
   const [registrationError, setRegisteredError] = React.useState(false);
 
 
+// Проверка токена
   function isLoggedInCheck() {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -40,7 +41,6 @@ function App() {
       .catch(err => {
         console.log(err)
       })
-
     }
   };
 
@@ -61,6 +61,7 @@ function App() {
     }
   }, []);
 
+  // Вход
   function handleLogin(email,password) {
     MainApi.login(email, password)
       .then((data) => {
@@ -76,6 +77,7 @@ function App() {
 
   };
 
+  // Регистрация
   function handleRegister(email, password, name) {
     MainApi.register(email, password, name)
       .then(data => {
@@ -90,12 +92,15 @@ function App() {
       });
   };
 
+  // Выход из учетки
   function handleLogout() {
       history.push('/');
       setIsLogin(false);
       localStorage.clear();
   };
 
+
+  // Изменить данные пользователя 
   function editProfile(name, email) {
 
     MainApi.setInfo(name, email)
