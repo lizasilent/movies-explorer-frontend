@@ -1,13 +1,7 @@
 class MoviesApi {
-  constructor({baseUrl, headers}){
+  constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
     this._headers = headers;
-  }
-
-  // Получить фильмы
-  getMovies() {
-    return fetch(`${this._baseUrl}`, {headers: this._headers})
-    .then(res => this._checkRequestResult(res));
   }
 
   _checkRequestResult(response) {
@@ -17,16 +11,23 @@ class MoviesApi {
     return Promise.reject(new Error(`Возникла ошибка: ${response.status}`));
   }
 
+  // Получить фильмы
+  getMovies() {
+    return fetch(`${this._baseUrl}`, { headers: this._headers }).then((res) =>
+      this._checkRequestResult(res)
+    );
+  }
+
   errorHandler(error) {
     console.log(error);
   }
 }
 
 const moviesApi = new MoviesApi({
-  baseUrl: 'https://api.nomoreparties.co/beatfilm-movies',
+  baseUrl: "https://api.nomoreparties.co/beatfilm-movies",
   headers: {
-    'Content-Type': 'application/json',
-  }
+    "Content-Type": "application/json",
+  },
 });
 
 export default moviesApi;

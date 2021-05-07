@@ -1,127 +1,179 @@
-class MainApi {
-  constructor({baseUrl, headers}){
-    this._baseUrl = baseUrl;
-    this._headers = headers;
-  }
-
-  getInfo() {
-    return fetch(`${this._baseUrl}/users/me`, {
-      headers: this._headers,
+export const register = (name, email, password) => {
+  return fetch(`${BASE_URL}/signup`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, email, password }),
+  })
+    .then((res) => {
+      return res.json();
     })
-      .then(response => this._checkRequestResult(response));
-  }
+    .then((res) => res);
+};
 
-  setInfo(name, email) {
-    return fetch(`${this._baseUrl}/users/me`, {
-      method: 'PATCH',
-      headers: this._headers,
-      body: JSON.stringify({
-        name,
-        email,
-      })
+export const login = (email, password) => {
+  return fetch(`${BASE_URL}/signin`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, password }),
+  })
+    .then((res) => {
+      return res.json();
     })
-    .then(response => this._checkRequestResult(response));
-  }
-
-
-  register(email, password, name) {
-    return fetch(`${this._baseUrl}/signup`, {
-      method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({
-        email,
-        password,
-        name
-      })
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("jwt", data.token);
+        return data;
+      }
     })
-    .then(response => this._checkRequestResult(response));
-  }
+    .catch((err) => console.log(err));
+};
 
-  login(email, password) {
-    return fetch(`${this._baseUrl}/signin`, {
-      method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({email, password})})
-      .then(response => this._checkRequestResult(response))
-      .then(data => {
-        if (data.token) {
-          localStorage.setItem('jwt', data.token);
-          this.updateHeaders();
-          return data.token;
-        } return Promise.reject(new Error(`Возникла ошибка: ${data.status}`));
-      })
-  }
-
-  logout() {
-    return fetch(`${this._baseUrl}/signout `, {
-      method: 'POST',
-      headers: this._headers,
+export const tokenCheck = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => {
+      return res.json();
     })
-    .then(response => this._checkRequestResult(response));
+    .then((res) => res);
+};
+
+export const getAllMovies = (token) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(getResponse);
+};
+
+export const getUserInfo = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(getResponse);
+};
+
+export const getMoviesServer = (token) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(getResponse);
+};
+
+export const editProfile = ({ name, email }, token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      name,
+      email,
+    }),
+  }).then(getResponse);
+};
+
+export const addNewMovie = (
+  {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailer,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId,
+  },
+  token
+) => {
+  return fetch(`${BASE_URL}/movies`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      country,
+      director,
+      duration,
+      year,
+      description,
+      image,
+      trailer,
+      nameRU,
+      nameEN,
+      thumbnail,
+      movieId,
+    }),
+  }).then(getResponse);
+};
+
+export const deleteMovie = (movieId, token) => {
+  return fetch(`${BASE_URL}/movies/${movieId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(getResponse);
+};
+
+export const deleteMovieLike = (cardId, token) => {
+  return fetch(`${BASE_URL}/cards/${cardId}/likes`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(getResponse);
+};
+export const putMovieLike = (cardId, token) => {
+  return fetch(`${BASE_URL}/cards/${cardId}/likes`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(getResponse);
+};
+
+// const BASE_URL = 'http://api.mesto.lizasilent.nomoredomains.icu';
+const BASE_URL = "http://localhost:3001";
+
+function getResponse(res) {
+  if (res.ok) {
+    return res.json();
   }
-
-
-  updateHeaders() {
-    this._headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `${localStorage.getItem('jwt')}`,
-    }
-  }
-
-  getSavedMovies(){
-    return fetch(`${this._baseUrl}/movies`, {headers: this._headers})
-    .then(response => this._checkRequestResult(response));
-  }
-
-  addMovie(movie) {
-    return fetch(`${this._baseUrl}/movies`, {
-      method: 'POST',
-      headers: this._headers,
-      body: JSON.stringify({
-        country: movie.country,
-        director: movie.director,
-        duration: movie.duration,
-        year: movie.year,
-        description: movie.description,
-        image: `https://api.nomoreparties.co${movie.image.url}`,
-        trailer: movie.trailerLink,
-        movieId: movie.id.toString(),
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
-        thumbnail: `https://api.nomoreparties.co${movie.image.url}`
-      })
-    })
-    .then(response => this._checkRequestResult(response));
-  }
-
-  removeMovie(movieId) {
-    return fetch(`${this._baseUrl}/movies/${movieId}`, {
-      method: 'DELETE',
-      headers: this._headers
-    })
-    .then(response => this._checkRequestResult(response));
-  }
-
-  _checkRequestResult(response) {
-    if (response.ok) {
-      return response.json();
-    }
-    return Promise.reject(new Error(`Возникла ошибка: ${response.status}`));
-  }
-
-  errorHandler(error) {
-    console.log(error);
-  }
-
-
+  return Promise.reject(res);
 }
-
-const mainApi = new MainApi({
-  baseUrl: 'https://api.movies.lizasilent.nomoredomains.monster',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `${localStorage.getItem('jwt')}`
-  }
-});
-
-export default mainApi;

@@ -196,9 +196,9 @@
     padding: 18px 30px;
   }
 
-  .header__container {
+  /* .header__container {
     visibility: hidden;
-  }
+  } */
 
   .header__hamburger-menu {
     visibility: visible;
