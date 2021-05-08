@@ -2,11 +2,13 @@ import { Link } from "react-router-dom";
 import "../Header/Header.css";
 import userLogo from "../../images/main_icon.png";
 
-function MoviesNavigation() {
+function MoviesNavigation(isLogin) {
   return (
     <>
-      <div className="header__menu">
-        <div className="header__container">
+      <div
+        className={isLogin ? "header__menu" : "header__movie-container_hidden"}
+      >
+        <div className="header__movie-container">
           <Link to="/movies" className="header__account">
             Фильмы
           </Link>
@@ -15,7 +17,11 @@ function MoviesNavigation() {
           </Link>
         </div>
       </div>
-      <div className="header__container">
+      <div
+        className={
+          isLogin ? "header__movie-container" : "header__movie-container_hidden"
+        }
+      >
         <Link to="/profile" className="header__account">
           Аккаунт
         </Link>
@@ -25,7 +31,7 @@ function MoviesNavigation() {
 
         <div className="header__hamburger-menu">
           <input id="menu__toggle" type="checkbox" />
-          <label className="menu__btn" for="menu__toggle">
+          <label className="menu__btn" htmlFor="menu__toggle">
             <span></span>
           </label>
           <ul className="menu__box">

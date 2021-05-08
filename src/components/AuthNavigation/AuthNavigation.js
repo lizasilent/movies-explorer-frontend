@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import "../Header/Header.css";
 
-function AuthNavigation() {
+function AuthNavigation(isLogin) {
   return (
-    <div className="header__container">
+    <div
+      className={
+        !isLogin ? "header__auth-container" : "header__auth-container_hidden"
+      }
+    >
       <Link to="/signup" className="header__account" className="header__signup">
         Регистрация
       </Link>

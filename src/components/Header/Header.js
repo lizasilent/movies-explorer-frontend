@@ -7,18 +7,18 @@ import mainLogo from "../../images/logo.png";
 import AuthNavigation from "../AuthNavigation/AuthNavigation";
 import MoviesNavigation from "../MoviesNavigation/MoviesNavigation";
 
-function Header({ isLogin, handleLogout }) {
-  const jwt = localStorage.getItem("jwt");
-  const { pathname } = useLocation();
+function Header({ isLogin }) {
+  const location = useLocation().pathname;
 
   return (
-    <header className="header">
+    <header className={location === "/" ? "header" : "header header_white"}>
       <Link to="/">
         <div className="header__logo">
           <img alt="лого" src={mainLogo} />
         </div>
       </Link>
-      {pathname === "/" && !jwt ? <MoviesNavigation /> : <AuthNavigation />}
+        <MoviesNavigation isLogin={isLogin} />
+        <AuthNavigation isLogin={isLogin} />
     </header>
   );
 }

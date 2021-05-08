@@ -9,10 +9,13 @@ import More from "../More/More";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Movies() {
+function Movies({isLogin}) {
+
+  const { pathname } = useLocation();
+
   return (
     <>
-      <Header />
+      < Header isLogin={isLogin} />
       <SearchForm />
       {/* <Preloader /> */}
       <MoviesCardList />

@@ -16,7 +16,7 @@
   background-size: contain;
   min-height: 38px;
 }
-.header__container {
+.header__auth-container {
   display: flex;
   flex-direction: row;
   font-style: normal;
@@ -26,6 +26,26 @@
   font-size: 12px;
   line-height: 16px;
 }
+
+.header__auth-container_hidden {
+  display: none;
+}
+
+.header__movie-container {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  justify-content: center;
+  align-content: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.header__movie-container_hidden{
+  display: none;
+}
+
 .header__signup {
   margin-right: 30px;
   text-decoration: none;
@@ -196,9 +216,15 @@
     padding: 18px 30px;
   }
 
-  /* .header__container {
+  .header__auth-container {
     visibility: hidden;
-  } */
+  }
+
+  .header__movie-container {
+    visibility: hidden;
+  }
+
+
 
   .header__hamburger-menu {
     visibility: visible;
@@ -212,10 +238,16 @@
   .header__signup {
     margin-right: 14px;
   }
-  .header__container {
+  .header__auth-container {
     font-size: 10px;
     line-height: 16px;
   }
+
+  .header__movie-container {
+    font-size: 10px;
+    line-height: 16px;
+  }
+
   .header__button {
     width: 54px;
     height: 26px;
@@ -223,7 +255,6 @@
   .header__signup {
     margin-right: 14px;
   }
-
   .menu__box {
     width: 100%;
     padding: 144px 10px 48px;
