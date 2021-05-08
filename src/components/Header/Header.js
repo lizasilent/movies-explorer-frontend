@@ -10,6 +10,8 @@ import MoviesNavigation from "../MoviesNavigation/MoviesNavigation";
 function Header({ isLogin }) {
   const location = useLocation().pathname;
 
+  console.log(isLogin)
+
   return (
     <header className={location === "/" ? "header" : "header header_white"}>
       <Link to="/">
@@ -17,8 +19,8 @@ function Header({ isLogin }) {
           <img alt="лого" src={mainLogo} />
         </div>
       </Link>
-        <MoviesNavigation isLogin={isLogin} />
-        <AuthNavigation isLogin={isLogin} />
+      {isLogin ? <MoviesNavigation /> : <AuthNavigation />}
+
     </header>
   );
 }

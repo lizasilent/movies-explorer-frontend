@@ -83,7 +83,7 @@ function App() {
     localStorage.removeItem("jwt");
     history.push("/");
   }
-
+  
   // установка и проверка токена
   function tokenChecking() {
     const jwt = localStorage.getItem("jwt");
@@ -172,7 +172,7 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Switch>
-            
+
             <Route exact path="/">
               <Header isLogin={isLogin} />
               <Main />

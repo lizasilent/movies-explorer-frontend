@@ -5,9 +5,7 @@ import userLogo from "../../images/main_icon.png";
 function MoviesNavigation(isLogin) {
   return (
     <>
-      <div
-        className={isLogin ? "header__menu" : "header__movie-container_hidden"}
-      >
+      <div className="header__menu">
         <div className="header__movie-container">
           <Link to="/movies" className="header__account">
             Фильмы
@@ -17,11 +15,7 @@ function MoviesNavigation(isLogin) {
           </Link>
         </div>
       </div>
-      <div
-        className={
-          isLogin ? "header__movie-container" : "header__movie-container_hidden"
-        }
-      >
+      <div className="header__movie-container">
         <Link to="/profile" className="header__account">
           Аккаунт
         </Link>

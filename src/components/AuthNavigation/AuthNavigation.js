@@ -4,9 +4,7 @@ import "../Header/Header.css";
 function AuthNavigation(isLogin) {
   return (
     <div
-      className={
-        !isLogin ? "header__auth-container" : "header__auth-container_hidden"
-      }
+      className= "header__auth-container"
     >
       <Link to="/signup" className="header__account" className="header__signup">
         Регистрация
