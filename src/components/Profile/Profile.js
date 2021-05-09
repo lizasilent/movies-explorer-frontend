@@ -1,61 +1,39 @@
+/* eslint-disable no-mixed-operators */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import "./Profile.css";
-// import Validation from "../../helpers/Validation";
 import Header from "../Header/Header";
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import Validation from "../../helpers/Validation";
 
-function Profile({ isLogin, handleLogout, handleEditProfile}) {
-
-  const [formValues, setFormValues] = React.useState({
-    name: '',
-    email: ''
-  });
+function Profile({ isLogin, handleLogout, handleEditProfile }) {
 
   const currentUser = React.useContext(CurrentUserContext);
-  React.useEffect(() => {
-    setFormValues({
-      ...formValues,
-      name: currentUser.name || '',
-      email: currentUser.email || ''
-    })
-  }, [currentUser]);
+  const formValidation = Validation();
+  const {email, name} = formValidation.values;
 
-  function handleInputChange(evt) {
-    const { name, value } = evt.target;
-    setFormValues({
-      ...formValues,
-      [name] : value
-    });
+  // Начальные значения формы
+  React.useEffect(()=> {
+    formValidation.setValues({ 'email': currentUser.data.email, 'name': currentUser.data.name });
+  },[currentUser]);
+
+  const submitEditProfile = (event) => {
+    event.preventDefault();
+    handleEditProfile(email, name);
+    console.log(name, email)
   }
-
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    handleEditProfile(formValues);
-    console.log(currentUser);
-  }
-
-
-
-  // const formValidation = Validation();
-  // const { name, email } = formValidation.values;
-
-  // const submitEditProfile = (event) => {
-  //   event.preventDefault();
-  //   editProfile(name, email);
-  // };
 
   return (
     <>
       <Header isLogin={isLogin} />
       <div className="profile">
-        <form onSubmit={handleSubmit}
+        <form onSubmit={submitEditProfile}
           name="edit-form"
           className="profile__form"
           type="submit"
         >
           <p className="profile__header">
-            Привет, {currentUser.name}!
+            Привет, {name}!
           </p>
 
           <div className="profile__row">
@@ -64,12 +42,13 @@ function Profile({ isLogin, handleLogout, handleEditProfile}) {
             </label>
             <input
               className="profile__text profile__input"
-              placeholder="Лиза"
-              type="text"
-              name="name"
+              type='text'
+              onChange={formValidation.handleChange}
+              value={name || ''}
               required
-              minLength="2"
-              maxLength="30"
+              minLength='2'
+              maxLength='30'
+              name="name"
             >
             </input>
           </div>
@@ -80,19 +59,16 @@ function Profile({ isLogin, handleLogout, handleEditProfile}) {
             </label>
             <input
               className="profile__text profile__input"
-              placeholder="Email"
-              type="email"
-              name="email"
-              required
+              type='email'
+                onChange={formValidation.handleChange}
+                value={email || ''}
+                required
+                name="email"
             >
             </input>
           </div>
-          <p className='profile__form-error'></p>
-            {/* {isEditError && <p className='profile__form-error'>Ошибка обновления данных</p>}
-            {isEditDone && <p className='profile__form-done'>Данные успешно обновлены</p>} */}
-          <button type="submit" className="profile__button">
-            Редактировать
-          </button>
+          <p className='profile__form-error'>{formValidation.errors.name||formValidation.errors.email}</p>
+          <button className="profile__button" type="submit" disabled={currentUser && (name === currentUser.data.email && email === currentUser.data.email) || !formValidation.isValid}>Редактировать</button>
           <button onClick={handleLogout} className="profile__link">
             Выйти из аккаунта
           </button>

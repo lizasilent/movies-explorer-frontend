@@ -11,7 +11,7 @@ export class ApiMain {
         }
         if (res.status === 409 || res.status === 404 || res.status === 400 ) {
           return Promise.reject({
-            status: res.status
+            res
           })
         }
         return Promise.reject(new Error(`Ошибка получения данных: ${res.status} ${res.statusText}`));
@@ -74,7 +74,7 @@ export class ApiMain {
           "Authorization" : `Bearer ${token}`
         },
         body: JSON.stringify({
-          name: data.name,
+          name : data.name,
           email: data.email
         })
       }))

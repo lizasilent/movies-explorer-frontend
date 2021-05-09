@@ -22,7 +22,6 @@ import Popup from "../Popup/Popup";
 import sucessLogoPath from "../../images/sucesspopup.png";
 import failLogoPath from "../../images/failpopup.png";
 
-
 function App() {
   const history = useHistory();
   let location = useLocation();
@@ -36,12 +35,7 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false); // проверка статуса загрузки карточек
   const [movies, setMovies] = React.useState([]);
 
-  const [registrationError, setRegisteredError] = React.useState(false); // ошибка регистрации
-  const [loginError, setLoginError] = React.useState(false); // ошибка логина
-  const [isEditError, setIsEditError] = React.useState(false); // ошибка обновления информации юзера
-  const [isEditDone, setIsEditDone] = React.useState(false); // подтверждение обновления информации юзера
-
-// меняем содержимое попапа
+  // меняем содержимое попапа
   const handlePopupContent = ({ iconPath, text }) => {
     setMessage({ iconPath: iconPath, text: text });
   };
@@ -51,45 +45,45 @@ function App() {
     setIsPopupOpen(false);
   }
 
-// установка и проверка токена
-React.useEffect(() => {
-
-  // const path = location.pathname;
-  const token = localStorage.getItem("token");
-  if (token) {
-    apiMain.checkToken(token)
-      .then((res) => {
-        if (res) {
-          setIsLoggedIn(true);
-          getCurrentUser();
-          history.push("/movies");
-        }
-      })
-      .catch((err) => {
-        console.log("какая-то фигня с твоим токеном" + err)
-        // localStorage.removeItem('token')
-        history.push('/');
-      });
-  }
-}, []);
+  // установка и проверка токена
+  React.useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      apiMain
+        .checkToken(token)
+        .then((res) => {
+          if (res) {
+            setIsLoggedIn(true);
+            getCurrentUser();
+            history.push("/movies");
+          }
+        })
+        .catch((err) => {
+          console.log("какая-то фигня с твоим токеном" + err);
+          // localStorage.removeItem('token')
+          history.push("/");
+        });
+    }
+  }, []);
 
   // получаем данные текущего пользователя
   function getCurrentUser() {
-    const token = localStorage.getItem('token');
-    apiMain.getCurrentUser(token)
+    const token = localStorage.getItem("token");
+    apiMain
+      .getCurrentUser(token)
       .then((res) => {
         if (res) {
-          setCurrentUser(res)
-          localStorage.setItem('currentUser', JSON.stringify(res));
+          setCurrentUser(res);
+          localStorage.setItem("currentUser", JSON.stringify(res));
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
   // регистрация пользователя
-  function handleRegister({name, email, password}) {
+  function handleRegister({ name, email, password }) {
     if (!name || !email || !password) {
       return;
     }
@@ -108,51 +102,53 @@ React.useEffect(() => {
           setTimeout(closeAllPopups, 2500);
         }
       })
-      .catch(err =>{
+      .catch((err) => {
         if (err.status === 409) {
-            setIsPopupOpen(true);
-            handlePopupContent({
-              iconPath: failLogoPath,
-              text: "Такой email уже существует",
-            });
-          } else {
-            // setRegisteredError(true);
-            setIsPopupOpen(true);
-            handlePopupContent({
-              iconPath: failLogoPath,
-              text: "Что-то пошло не так! Попробуйте ещё раз.",
-            });
-            setTimeout(closeAllPopups, 2500);}
+          setIsPopupOpen(true);
+          handlePopupContent({
+            iconPath: failLogoPath,
+            text: "Такой email уже существует",
           });
+        } else {
+          // setRegisteredError(true);
+          setIsPopupOpen(true);
+          handlePopupContent({
+            iconPath: failLogoPath,
+            text: "Что-то пошло не так! Попробуйте ещё раз.",
+          });
+          setTimeout(closeAllPopups, 2500);
+        }
+      });
   }
 
   function handleLogin(email, password) {
-    apiMain.login(email, password)
-    .then((res) => {
-      if (res.token) {
-        localStorage.setItem('token', res.token);
-        setIsLoggedIn(true);
-        getCurrentUser();
-        history.push('/movies');
-      }
-    })
-    .catch(err => {
-      if (err.status === 400) {
-        setIsPopupOpen(true);
-        handlePopupContent({
-          iconPath: failLogoPath,
-          text: "Неверный email или пароль",
-        });
-        setTimeout(closeAllPopups, 2500);
-      } else {
-        setIsPopupOpen(true);
-        handlePopupContent({
-          iconPath: failLogoPath,
-          text: "Что-то пошло не так! Попробуйте ещё раз.",
-        });
-        setTimeout(closeAllPopups, 2500);
-      }
-    })
+    apiMain
+      .login(email, password)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem("token", res.token);
+          setIsLoggedIn(true);
+          getCurrentUser();
+          history.push("/movies");
+        }
+      })
+      .catch((err) => {
+        if (err.status === 400) {
+          setIsPopupOpen(true);
+          handlePopupContent({
+            iconPath: failLogoPath,
+            text: "Неверный email или пароль",
+          });
+          setTimeout(closeAllPopups, 2500);
+        } else {
+          setIsPopupOpen(true);
+          handlePopupContent({
+            iconPath: failLogoPath,
+            text: "Что-то пошло не так!",
+          });
+          setTimeout(closeAllPopups, 2500);
+        }
+      });
   }
 
   // function onSubmitLogin({email, password}) {
@@ -171,16 +167,18 @@ React.useEffect(() => {
 
   // обновление информации о юзере
   function handleEditProfile(data) {
-    apiMain.editProfile(data)
+    apiMain
+      .editProfile(data)
       .then((profile) => {
         setCurrentUser(profile);
+        console.log(profile)
         setIsPopupOpen(true);
-          handlePopupContent({
-            iconPath: sucessLogoPath,
-            text: "Информация обновлена",
-          });
-          setTimeout(history.push, 3000, "/profile");
-          setTimeout(closeAllPopups, 2500);
+        handlePopupContent({
+          iconPath: sucessLogoPath,
+          text: "Информация обновлена",
+        });
+        setTimeout(history.push, 3000, "/profile");
+        setTimeout(closeAllPopups, 2500);
       })
       .catch((err) => {
         if (err.status === 409) {
@@ -195,12 +193,10 @@ React.useEffect(() => {
           });
         }
         setIsPopupOpen(true);
-        setTimeout(history.push, 3000, "/");
         setTimeout(closeAllPopups, 2500);
-      })
+        console.log(err);
+      });
   }
-
-
 
   // получение данных о всех фильмах внешнего сервиса и сохранение массива в localStorage
   function getMovies() {
@@ -256,13 +252,10 @@ React.useEffect(() => {
               handleEditProfile={handleEditProfile}
             />
             <Route exact path="/signin">
-              <Login handleLogin={handleLogin} loginError={loginError} />
+              <Login handleLogin={handleLogin} />
             </Route>
             <Route exact path="/signup">
-              <Register
-                handleRegister={handleRegister}
-                registrationError={registrationError}
-              />
+              <Register handleRegister={handleRegister} />
             </Route>
             <Route path="/*">
               <NotFoundPage />

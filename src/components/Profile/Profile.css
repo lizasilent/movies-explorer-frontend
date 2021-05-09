@@ -41,23 +41,38 @@
 .profile__input {
   outline: none;
   border-style: none;
-  max-width: 80px;
+  color: gray;
 }
 
 .profile__button {
-  color: black;
+  color: white;
   font-style: normal;
   font-weight: normal;
   font-size: 13px;
   line-height: 16px;
-  background-color: transparent;
+  background-color: #3456f3;
   border-style: none;
   margin: 220px 0 16px 0;
   cursor: pointer;
+  border-radius: 3px;
+  min-height: 15px;
 }
 .profile__button:hover {
   opacity: 0.8;
 }
+
+.profile__button:disabled{
+  background-color: #a0a0a0;
+}
+
+.profile__form-error {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  color: #ee3465;
+}
+
 .profile__link {
   font-style: normal;
   font-weight: 500;
