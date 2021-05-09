@@ -9,19 +9,19 @@ import Form from "../Form/Form";
 function Register({ handleRegister, registrationError }) {
 
   const formValidation = Validation();
-  const {email, password, name} = formValidation.values;
+  const { name, email, password } = formValidation.values;
   const {values, onFocus, handleChange, isFocused, errors} = formValidation;
 
   const submitHandle = (event) => {
     event.preventDefault();
-    handleRegister(email, password, name);
+    handleRegister(name, email, password);
     formValidation.resetForm();
   }
 
 
   return (
     <section className="login">
-      <div className="login__form">
+      <div className="login__form" onSubmit={submitHandle}>
       <Link to="/">
         <img alt="лого" src={mainLogo} className="login__logo" /></Link>
         <p className="login__header">Добро пожаловать!</p>

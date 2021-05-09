@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../Header/Header.css";
 import userLogo from "../../images/main_icon.png";
 
-function MoviesNavigation(isLogin) {
+function MoviesNavigation() {
+
+  const location = useLocation().pathname;
+
   return (
     <>
       <div className="header__menu">
         <div className="header__movie-container">
-          <Link to="/movies" className="header__account">
+          <Link to="/movies" className={location === "/movies" ? "header__account header__account_bold" : "header__account"}>
             Фильмы
           </Link>
-          <Link to="/saved-movies" className="header__account">
+          <Link to="/saved-movies" className={location === "/saved-movies" ? "header__account header__account_bold" : "header__account" }>
             Сохраненные фильмы
           </Link>
         </div>

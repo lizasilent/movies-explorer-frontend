@@ -97,6 +97,9 @@
   color: black;
   align-self: center;
 }
+.header__account_bold {
+  font-weight: bold;
+}
 
 .header__account:hover {
   text-decoration:underline;
@@ -216,14 +219,10 @@
     padding: 18px 30px;
   }
 
-  .header__auth-container {
-    visibility: hidden;
-  }
 
   .header__movie-container {
     visibility: hidden;
   }
-
 
 
   .header__hamburger-menu {

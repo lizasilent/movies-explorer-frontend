@@ -20,7 +20,7 @@ function Form({
   } = validation;
 
   return (
-    <form className="login__form" onSubmit={submitHandle} name={`${formName}-form`}>
+    <form className="login__form" action="post" onSubmit={submitHandle} name={`${formName}-form`}>
       {children}
       <label htmlFor="email">
         <p className="login__label">E-mail</p>

@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import Validation from "../../helpers/Validation";
 import Form from "../Form/Form";
 
-function Login({handleLoggedIn, loginError}) {
+function Login({handleLogin, loginError}) {
 
   const formValidation = Validation();
   const {email, password} = formValidation.values;
 
   const submitHandle = (event) => {
     event.preventDefault();
-    handleLoggedIn(email, password);
+    handleLogin(email, password);
     formValidation.resetForm();
   }
 

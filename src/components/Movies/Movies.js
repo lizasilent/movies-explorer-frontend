@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
-import { useLocation } from "react-router-dom";
 import MoviesApi from "../../utils/MoviesApi";
 import MainApi from "../../utils/MainApi";
 import SearchForm from "../SearchForm/SearchForm";
@@ -10,9 +10,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 function Movies({isLogin}) {
-
-  const { pathname } = useLocation();
-
+  
   return (
     <>
       < Header isLogin={isLogin} />

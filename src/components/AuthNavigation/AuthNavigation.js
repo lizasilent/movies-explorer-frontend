@@ -1,7 +1,8 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import { Link } from "react-router-dom";
 import "../Header/Header.css";
 
-function AuthNavigation(isLogin) {
+function AuthNavigation() {
   return (
     <div
       className= "header__auth-container"

@@ -10,6 +10,7 @@
   flex-direction: column;
   text-align: left;
   width: 410px;
+  box-sizing: border-box;
 }
 .profile__header {
   font-style: normal;
@@ -34,7 +35,15 @@
   font-size: 11px;
   line-height: 13px;
   margin: 16px 0 16px 0;
+  border-style: none;
 }
+
+.profile__input {
+  outline: none;
+  border-style: none;
+  max-width: 80px;
+}
+
 .profile__button {
   color: black;
   font-style: normal;
@@ -58,6 +67,8 @@
   color: #ee3465;
   text-decoration: none;
   margin: 0;
+  border-style: none;
+  background-color: white;
 }
 @media screen and (max-width: 999px) {
   .profile {
