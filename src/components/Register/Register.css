@@ -1,20 +1,19 @@
-.login {
+
+.register{
   padding: 70px 0;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.login__form {
+.register__form {
   display: flex;
   flex-direction: column;
   text-align: left;
   width: 396px;
 }
-.login__logo {
-  width: 38px;
-}
-.login__header {
+
+.register__header {
   position: relative;
   color: black;
   font-style: normal;
@@ -26,7 +25,7 @@
 }
 
 @media screen and (max-width: 999px) {
-  .login {
+  .register {
     padding: 232px 0;
   }
   .login__header {
@@ -34,20 +33,19 @@
   }
 
 }
+
 @media screen and (max-width: 442px) {
-  .login {
+  .register {
     padding: 58px 30px 30px;
     justify-content: center;
     text-align: center;
   }
-  .login__form {
+  .register__form {
     max-width: 260px;
     align-self: center;
   }
-  .login__logo {
-    align-self: center;
-  }
-  .login__header {
+
+  .register__header {
     margin: 50px 0 80px;
     align-self: center;
     font-size: 24px;
