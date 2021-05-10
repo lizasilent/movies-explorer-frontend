@@ -5,13 +5,14 @@ export class ApiMain {
   }
 
   _getResponseData(response) {
-    return response.then((res) => {
+    return response.then((res, req) => {
         if (res.ok) {
           return res.json();
         }
         if (res.status === 409 || res.status === 404 || res.status === 400 ) {
           return Promise.reject({
-            res
+            status: res.status,
+            text: res.statusText
           })
         }
         return Promise.reject(new Error(`Ошибка получения данных: ${res.status} ${res.statusText}`));
@@ -81,7 +82,7 @@ export class ApiMain {
   }
 
     //все фильмы
-    getAllMovies() {
+    getMovies() {
       const token = localStorage.getItem('token');
       return this._getResponseData(fetch(`${this._baseUrl}/movies`, {
         method: 'GET',
@@ -130,8 +131,10 @@ export class ApiMain {
 
 const apiMain = new ApiMain({
   baseUrl: 'http://localhost:3002',
+  // baseUrl: "https://api.movies.lizasilent.nomoredomains.monster/",
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+
   }
 })
 

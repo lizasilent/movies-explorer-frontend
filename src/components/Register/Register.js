@@ -13,8 +13,8 @@ function Register({ handleRegister }) {
   const submitHandle = (event) => {
     event.preventDefault();
     handleRegister(name, email, password);
-    formValidation.resetForm();
-    console.log("xnj-то произошло")
+    // formValidation.resetForm();
+    console.log("что-то произошло")
   };
 
   return (
@@ -35,7 +35,6 @@ function Register({ handleRegister }) {
           submitHandle={submitHandle}
           validation={formValidation}
           formName="register"
-
 
           children={
             <>
