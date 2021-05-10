@@ -126,7 +126,7 @@ function App() {
           localStorage.setItem("token", res.token);
           setIsLoggedIn(true);
           getCurrentUser();
-          history.push("/movies");
+          history.push("/");
         }
       })
       .catch((err) => {
@@ -378,10 +378,18 @@ function App() {
             </Route>
 
             <ProtectedRoute
-              exact
-              path="/movies"
+             exact
+             path="/movies"
               component={Movies}
               isLogin={isLogin}
+              movies={filterMovies}
+              isLoading={isLoading}
+              loadingError={loadingError}
+              savedMovies={false}
+              isSavedMovie={isSavedMovie}
+              onSubmitSearch={onSubmitSearch}
+              onBookmarkClick={onBookmarkClick}
+
             />
             <ProtectedRoute
               exact

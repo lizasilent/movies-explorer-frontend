@@ -1,37 +1,56 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import "./MoviesCard.css";
-import testpic from "../../images/testpic.png";
 import moviesIconCard from "../../images/save_icon.png";
 import moviesSavedCardIcon from "../../images/saved_icon.png";
 import deleteCardIcon from "../../images/delete_icon.png";
 
+function MoviesCard({ savedMovies, movie, onBookmarkClick, isSavedMovie }) {
+  const { nameRU, duration, trailer, image } = movie;
 
-function MoviesCard(cards) {
+  let isSaved = isSavedMovie(movie);
 
-  console.log(cards);
+  function durationFormat(duration) {
+    const hh = Math.trunc(duration / 60);
+    const mm = duration % 60;
+    return `${hh > 0 ? hh + "ч " : ""}${mm}м`;
+  }
 
-  const { pathname } = useLocation();
-  const isAdded = true; // Поменять на false для проверки
-  //Если фильм добавили в избранное
-  const moviesIcon = (isAdded ? moviesIconCard : moviesSavedCardIcon)
-  //  В зависимости от страницы карточек отображаем иконку "добавить" или иконку "удалить"
-  const cardIcon = (pathname === "/movies" ? moviesIcon : deleteCardIcon)
+  function handleBookmarkClick(evt) {
+    evt.preventDefault();
+    onBookmarkClick(movie, !isSaved);
+  }
 
+  function handleOnDelete() {
+    onBookmarkClick(movie, false);
+  }
 
+  // const moviesIcon = (isAdded ? moviesIconCard : moviesSavedCardIcon)
+  // //  В зависимости от страницы карточек отображаем иконку "добавить" или иконку "удалить"
+  // const cardIcon = (pathname === "/movies" ? moviesIcon : deleteCardIcon)
 
   return (
     <>
       <li className="grid__item">
-        <img src={testpic} alt="изображение фильма" className="grid__image" />
+        <img src={image}  alt="изображение фильма" className="grid__image" />
         <div className="grid__text-container">
           <div className="grid__name-block">
-            <p className="grid__text">33 слова о дизайне</p>
-            <img alt="иконка карточки" className="grid__icon"
-              src={cardIcon}
-            />
+            <p className="grid__text">{nameRU}</p>
+
+            {savedMovies ? (
+              <img
+                alt="иконка карточки"
+                className="grid__icon"
+                src={deleteCardIcon}
+              />
+            ) : (
+              <img
+                alt="иконка карточки"
+                className="grid__icon"
+                src={moviesIconCard}
+              />
+            )}
           </div>
-          <p className="grid__duration">33 hours</p>
+          <p className="grid__duration">{durationFormat(duration)}</p>
         </div>
       </li>
     </>

@@ -1,10 +1,10 @@
 import React from "react";
 import "./More.css";
 
-function More() {
+function More(handleMoreCards) {
   return (
     <div className="more">
-      <button className="more__button" type="button">
+      <button className="more__button" type="button" onClick={handleMoreCards}>
         Еще
       </button>
     </div>

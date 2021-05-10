@@ -2,10 +2,34 @@ import React from "react";
 import "./SearchForm.css";
 import searchpic from "../../images/search_icon.png";
 
-function SearchForm() {
+function SearchForm({onSubmitSearch, onFilterShort, isLoading}) {
+
+  const [query, setQuery] = React.useState('');
+  const [isSubmitDisabled, setIsSubmitDisabled] = React.useState(false);
+
+  function handleOnChange(evt) {
+    setQuery(evt.target.value);
+  }
+
+  function handleOnSubmit(evt) {
+    evt.preventDefault();
+    onSubmitSearch(query);
+  }
+
+  function handleOnChangeFilter(evt) {
+    onFilterShort(evt.target.checked);
+  }
+
+  React.useEffect(() => {
+    setIsSubmitDisabled(query === '');
+  }, [query])
+
+
+
+
   return (
     <div className="search">
-      <div className="search__form">
+      <form className="search__form" onSubmit={handleOnSubmit}>
         <div className="search__left-box">
           <img src={searchpic} alt="иконка поиска" className="search__image" />
           <input
@@ -14,8 +38,9 @@ function SearchForm() {
             type="search"
             className="search__input"
             required
+            onChange={handleOnChange} disabled={isLoading}
           />
-          <button type="submit" className="search__button">
+          <button type="submit" className={`search__button ${isSubmitDisabled && 'search__button_disabled'}`} disabled={isSubmitDisabled || isLoading}>
             Найти
           </button>
         </div>
@@ -25,13 +50,13 @@ function SearchForm() {
             type="checkbox"
             name="toggle"
             id="toggle-button"
-            className="switch__toggle-button"
+            className="switch__toggle-button" onChange={handleOnChangeFilter}
           />
           <label htmlFor="switch__toggle-button" className="switch__text">
             Короткометражки
           </label>
         </div>
-      </div>
+      </form>
       <div className="portfolio__line portfolio__line_invisible" />
     </div>
   );
