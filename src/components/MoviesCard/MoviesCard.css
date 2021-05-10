@@ -5,6 +5,12 @@
   overflow: hidden;
   background-color: #ffffff;
 }
+
+.grid__image{
+  width: 100%;
+  height: 151px;
+}
+
 .grid__text-container {
   position: relative;
   color: black;
@@ -55,21 +61,4 @@
 }
 .grid__icon:hover {
   opacity: 0.8;
-}
-
-
-@media screen and (max-width: 999px) {
-  .grid__image {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 523px) {
-  .grid__image {
-    width: 100%;
-  }
-}
-@media screen and (max-width: 400px) {
-  .grid__image {
-    width: 100%;
-  }
 }
