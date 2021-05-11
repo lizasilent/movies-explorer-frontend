@@ -31,10 +31,8 @@ function App() {
   const [isPopupOpen, setIsPopupOpen] = React.useState(false); //открытие попапа с ошибкой
   const [message, setMessage] = React.useState({ iconPath: "", text: "" }); // его содержимое
 
-
   const [isLoading, setIsLoading] = React.useState(false); //загрузка
-  const [loadingError, setLoadingError] = React.useState('');  //ошибка загрузки
-
+  const [loadingError, setLoadingError] = React.useState(""); //ошибка загрузки
 
   // меняем содержимое попапа
   const handlePopupContent = ({ iconPath, text }) => {
@@ -84,13 +82,13 @@ function App() {
   }
 
   // регистрация пользователя
-  function handleRegister({ name, email, password }) {
+  function handleRegister(name, email, password) {
     apiMain
       .register(name, email, password)
       .then((res) => {
         // console.log(res)
         if (res) {
-          // handleLogin(email, password);
+          handleLogin(email, password);
           setIsPopupOpen(true);
           handlePopupContent({
             iconPath: sucessLogoPath,
@@ -153,8 +151,8 @@ function App() {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
     history.push("/");
-    localStorage.removeItem('initialMovies');
-    localStorage.removeItem('savedMovies');
+    localStorage.removeItem("initialMovies");
+    localStorage.removeItem("savedMovies");
     setInitialMovies([]);
     setSavedMovies([]);
     setFilterMovies([]);
@@ -163,11 +161,12 @@ function App() {
 
   // обновление информации о юзере
   function handleEditProfile(data) {
+    console.log(data);
     apiMain
       .editProfile(data)
       .then((profile) => {
         setCurrentUser(profile);
-        console.log(profile)
+        console.log(profile);
         setIsPopupOpen(true);
         handlePopupContent({
           iconPath: sucessLogoPath,
@@ -194,92 +193,93 @@ function App() {
       });
   }
 
-
   /*** поиск фильма ***/
   const [initialMovies, setInitialMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [filterMovies, setFilterMovies] = React.useState([]);
   const [filterSavedMovies, setFilterSavedMovies] = React.useState([]);
-  const [query, setQuery] = React.useState('');
+  const [query, setQuery] = React.useState("");
 
   function getInitialMovies() {
+    apiMovies
+      .getAllMovies()
+      .then((data) => {
+        const initialArray = data.map((item) => {
+          const imageURL = item.image ? item.image.url : "";
+          return {
+            ...item,
+            image: `https://api.nomoreparties.co${imageURL}`,
+            trailer: item.trailerLink,
+          };
+        });
 
-    apiMovies.getAllMovies()
-    .then((data) => {
-      const initialArray = data.map((item) => {
-        const imageURL = item.image ? item.image.url : '';
-        return {
-          ...item,
-          image: `https://api.nomoreparties.co${imageURL}`,
-          trailer: item.trailerLink,
-        }
+        localStorage.setItem("initialMovies", JSON.stringify(initialArray));
+        setInitialMovies(initialArray);
       })
-
-      localStorage.setItem('initialMovies', JSON.stringify(initialArray));
-      setInitialMovies(initialArray);
-    })
-    .catch((err) => {
-      localStorage.removeItem('initialMovies');
-      setLoadingError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-    })
-
+      .catch((err) => {
+        localStorage.removeItem("initialMovies");
+        setLoadingError(
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+        );
+      });
   }
 
   function getSavedMovies() {
-    apiMain.getMovies()
+    apiMain
+      .getMovies()
       .then((data) => {
         const savedArray = data.map((item) => {
-          return {...item, id: item.movieId}
-        })
-        localStorage.setItem('savedMovies', JSON.stringify(savedArray));
+          return { ...item, id: item.movieId };
+        });
+        localStorage.setItem("savedMovies", JSON.stringify(savedArray));
         setSavedMovies(savedArray);
       })
       .catch((err) => {
-        localStorage.removeItem('savedMovies');
-        setLoadingError('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз');
-      })
+        localStorage.removeItem("savedMovies");
+        setLoadingError(
+          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+        );
+      });
   }
 
   React.useEffect(() => {
-    const initial = JSON.parse(localStorage.getItem('initialMovies'));
+    const initial = JSON.parse(localStorage.getItem("initialMovies"));
     if (initial) {
       setInitialMovies(initial);
     } else {
       getInitialMovies();
     }
 
-    const saved = JSON.parse(localStorage.getItem('savedMovies'));
+    const saved = JSON.parse(localStorage.getItem("savedMovies"));
     if (saved) {
-      setSavedMovies(saved)
+      setSavedMovies(saved);
     } else {
       getSavedMovies();
     }
-  }, [])
+  }, []);
 
   React.useEffect(() => {
-
     if (isLogin) {
       //после авторизации обновим данные для текущего пользователя
       getInitialMovies();
       getSavedMovies();
     }
-  }, [isLogin])
-
+  }, [isLogin]);
 
   function isSavedMovie(movie) {
-    return savedMovies.some((item) => item.id === movie.id)
+    return savedMovies.some((item) => item.id === movie.id);
   }
 
   function filter(data, query) {
     if (query) {
-      const regex = new RegExp(query,'gi');
+      const regex = new RegExp(query, "gi");
       const filterData = data.filter((item) => {
         return regex.test(item.nameRU) || regex.test(item.nameEN);
       });
       if (filterData.length === 0) {
-        setLoadingError('Ничего не найдено');
+        setLoadingError("Ничего не найдено");
       } else {
-        setLoadingError('');
+        setLoadingError("");
       }
       return filterData;
     }
@@ -292,7 +292,7 @@ function App() {
       setQuery(query);
       setFilterMovies(filter(initialMovies, query));
       setIsLoading(false);
-    }, 500)
+    }, 500);
   }
 
   function onSubmitSearchSaved(query) {
@@ -301,12 +301,11 @@ function App() {
       setQuery(query);
       setFilterSavedMovies(filter(savedMovies, query));
       setIsLoading(false);
-    }, 500)
+    }, 500);
   }
 
   //избранное
   function onBookmarkClick(movie, isMarked) {
-
     if (isMarked) {
       addMovie(movie);
     } else {
@@ -317,54 +316,56 @@ function App() {
   //удаление из избранного
   function deleteMovie(movie) {
     const movieId = savedMovies.find((item) => item.id === movie.id)._id;
-    apiMain.deleteMovies(movieId)
-    .then((res) => {
-      if (res) {
-        const newArray = savedMovies.filter((item) => item.movieId!== res.movieId);
-        setSavedMovies(newArray);
-      }
-    })
-    .catch(() => {
-      setIsPopupOpen(true);
-      handlePopupContent({
-        iconPath: failLogoPath,
-        text: "На сервере произошла ошибка",
+    apiMain
+      .deleteMovies(movieId)
+      .then((res) => {
+        if (res) {
+          const newArray = savedMovies.filter(
+            (item) => item.movieId !== res.movieId
+          );
+          setSavedMovies(newArray);
+        }
+      })
+      .catch(() => {
+        setIsPopupOpen(true);
+        handlePopupContent({
+          iconPath: failLogoPath,
+          text: "На сервере произошла ошибка",
+        });
+        setTimeout(closeAllPopups, 2500);
       });
-      setTimeout(closeAllPopups, 2500);
-    })
   }
 
   //добавление в избранное
   function addMovie(movie) {
-    apiMain.createMovie(movie)
-    .then((res) => {
-      setSavedMovies([...savedMovies, {...res, id: res.movieId}])
-   })
-    .catch(() => {
-      setIsPopupOpen(true);
-      handlePopupContent({
-        iconPath: failLogoPath,
-        text: "На сервере произошла ошибка",
+    apiMain
+      .createMovie(movie)
+      .then((res) => {
+        setSavedMovies([...savedMovies, { ...res, id: res.movieId }]);
+      })
+      .catch(() => {
+        setIsPopupOpen(true);
+        handlePopupContent({
+          iconPath: failLogoPath,
+          text: "На сервере произошла ошибка",
+        });
+        setTimeout(closeAllPopups, 2500);
       });
-      setTimeout(closeAllPopups, 2500);
-    })
   }
 
   React.useEffect(() => {
     setFilterSavedMovies(filter(savedMovies, query));
-    localStorage.setItem('savedMovies', JSON.stringify(savedMovies));
-  }, [savedMovies])
+    localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+  }, [savedMovies]);
 
+  // // Разработка
+  // function devLogincheck() {
+  //   const token = localStorage.getItem("token");
+  //   console.log(isLogin);
+  //   console.log(currentUser);
+  // }
 
-
-// Разработка
-  function devLogincheck() {
-    const token = localStorage.getItem("token");
-    console.log(isLogin);
-    console.log(currentUser);
-  }
-
-  devLogincheck();
+  // devLogincheck();
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -378,8 +379,8 @@ function App() {
             </Route>
 
             <ProtectedRoute
-             exact
-             path="/movies"
+              exact
+              path="/movies"
               component={Movies}
               isLogin={isLogin}
               movies={filterMovies}
@@ -389,7 +390,6 @@ function App() {
               isSavedMovie={isSavedMovie}
               onSubmitSearch={onSubmitSearch}
               onBookmarkClick={onBookmarkClick}
-
             />
             <ProtectedRoute
               exact

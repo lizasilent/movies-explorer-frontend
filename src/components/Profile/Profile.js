@@ -19,7 +19,7 @@ function Profile({ isLogin, handleLogout, handleEditProfile }) {
 
   const submitEditProfile = (event) => {
     event.preventDefault();
-    handleEditProfile(email, name);
+    handleEditProfile({email, name});
     console.log(name, email)
   }
 

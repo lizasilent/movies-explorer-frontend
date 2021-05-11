@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import mainLogo from "../../images/logo.png";
 import Validation from "../../helpers/Validation";
 import Form from "../Form/Form";
-import './Register.css';
+import "./Register.css";
 
 function Register({ handleRegister }) {
   const formValidation = Validation();
@@ -12,9 +12,10 @@ function Register({ handleRegister }) {
 
   const submitHandle = (event) => {
     event.preventDefault();
+    console.log(email);
     handleRegister(name, email, password);
     // formValidation.resetForm();
-    console.log("что-то произошло")
+    console.log("что-то произошло");
   };
 
   return (
@@ -35,7 +36,6 @@ function Register({ handleRegister }) {
           submitHandle={submitHandle}
           validation={formValidation}
           formName="register"
-
           children={
             <>
               <label htmlFor="name">
