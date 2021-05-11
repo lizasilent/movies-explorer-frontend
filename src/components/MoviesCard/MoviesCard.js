@@ -1,8 +1,5 @@
 import React from "react";
 import "./MoviesCard.css";
-import moviesIconCard from "../../images/save_icon.png";
-import moviesSavedCardIcon from "../../images/saved_icon.png";
-import deleteCardIcon from "../../images/delete_icon.png";
 
 function MoviesCard({ savedMovies, movie, onBookmarkClick, isSavedMovie }) {
   const { nameRU, duration, trailer, image } = movie;
@@ -20,33 +17,33 @@ function MoviesCard({ savedMovies, movie, onBookmarkClick, isSavedMovie }) {
     onBookmarkClick(movie, !isSaved);
   }
 
-  function handleOnDelete() {
+  function handleDelete() {
     onBookmarkClick(movie, false);
   }
-
-  // const moviesIcon = (isAdded ? moviesIconCard : moviesSavedCardIcon)
-  // //  В зависимости от страницы карточек отображаем иконку "добавить" или иконку "удалить"
-  // const cardIcon = (pathname === "/movies" ? moviesIcon : deleteCardIcon)
 
   return (
     <>
       <li className="grid__item">
-        <img src={image}  alt="изображение фильма" className="grid__image" />
+        <a href={trailer}>
+          <img src={image} alt="изображение фильма" className="grid__image" />
+        </a>
+
         <div className="grid__text-container">
           <div className="grid__name-block">
             <p className="grid__text">{nameRU}</p>
 
             {savedMovies ? (
-              <img
-                alt="иконка карточки"
-                className="grid__icon"
-                src={deleteCardIcon}
+              <button
+                className="grid__icon grid__icon_del"
+                onClick={handleDelete}
               />
             ) : (
-              <img
-                alt="иконка карточки"
-                className="grid__icon"
-                src={moviesIconCard}
+              <button onClick={handleBookmarkClick}
+                className={
+                  isSaved
+                    ? "grid__icon grid__icon_saved"
+                    : "grid__icon grid__icon_unsaved"
+                }
               />
             )}
           </div>

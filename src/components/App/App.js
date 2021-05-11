@@ -383,10 +383,10 @@ function App() {
               path="/movies"
               component={Movies}
               isLogin={isLogin}
+              savedMovies={false}
               movies={filterMovies}
               isLoading={isLoading}
               loadingError={loadingError}
-              savedMovies={false}
               isSavedMovie={isSavedMovie}
               onSubmitSearch={onSubmitSearch}
               onBookmarkClick={onBookmarkClick}
@@ -396,6 +396,13 @@ function App() {
               path="/saved-movies"
               component={Movies}
               isLogin={isLogin}
+              savedMovies={true}
+              isLoading={isLoading}
+              loadingError={loadingError}
+              movies={filterSavedMovies}
+              onSubmitSearch={onSubmitSearchSaved}
+              onBookmarkClick={onBookmarkClick}
+              isSavedMovie={isSavedMovie}
             />
             <ProtectedRoute
               exact
