@@ -74,6 +74,7 @@ function App() {
         if (res) {
           setCurrentUser(res);
           localStorage.setItem("currentUser", JSON.stringify(res));
+
         }
       })
       .catch((err) => {
@@ -159,12 +160,10 @@ function App() {
 
   // обновление информации о юзере
   function handleEditProfile(data) {
-    console.log(data);
     apiMain
       .editProfile(data)
       .then((profile) => {
         setCurrentUser(profile);
-        console.log(profile);
         setIsPopupOpen(true);
         handlePopupContent({
           iconPath: sucessLogoPath,
@@ -187,11 +186,10 @@ function App() {
         }
         setIsPopupOpen(true);
         setTimeout(closeAllPopups, 2500);
-        console.log(err);
       });
   }
 
-  /*** поиск фильма ***/
+// Поиск фильма
   const [initialMovies, setInitialMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [filterMovies, setFilterMovies] = React.useState([]);
