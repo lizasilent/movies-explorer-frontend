@@ -86,7 +86,6 @@ function App() {
     apiMain
       .register(name, email, password)
       .then((res) => {
-        // console.log(res)
         if (res) {
           handleLogin(email, password);
           setIsPopupOpen(true);
@@ -94,7 +93,6 @@ function App() {
             iconPath: sucessLogoPath,
             text: "Вы успешно зарегистрировались!",
           });
-          setTimeout(history.push, 3000, "/signin");
           setTimeout(closeAllPopups, 2500);
         }
       })
@@ -124,7 +122,7 @@ function App() {
           localStorage.setItem("token", res.token);
           setIsLoggedIn(true);
           getCurrentUser();
-          history.push("/");
+          history.push("/movies");
         }
       })
       .catch((err) => {
