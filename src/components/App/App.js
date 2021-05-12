@@ -234,7 +234,7 @@ function App() {
         localStorage.setItem("savedMovies", JSON.stringify(savedArray));
         setSavedMovies(savedArray);
       })
-      .catch((err) => {
+      .catch(() => {
         localStorage.removeItem("savedMovies");
         setLoadingError(
           "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"

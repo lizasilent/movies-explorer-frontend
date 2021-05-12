@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import More from "../More/More";
 
 function MoviesCardList({ savedMovies, movies, onBookmarkClick, isSavedMovie }) {
 
@@ -73,7 +73,12 @@ renderMovies.map((movie) => (
 }
       </ul>
     </div>
-    { currentCount < movies.length && <More handleMoreCards={handleMoreCards}  /> }
+    { currentCount < movies.length &&
+     <div className="more">
+      <button className="more__button" type="button" onClick={handleMoreCards}>
+        Еще
+      </button>
+    </div>  }
 
        </>
   );
