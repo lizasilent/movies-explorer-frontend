@@ -58,8 +58,8 @@ function App() {
           }
         })
         .catch((err) => {
-          console.log("какая-то фигня с твоим токеном" + err);
-          // localStorage.removeItem('token')
+          console.log("Ошибка токена" + err);
+          localStorage.removeItem('token')
           history.push("/");
         });
     }
@@ -217,7 +217,7 @@ function App() {
       .catch((err) => {
         localStorage.removeItem("initialMovies");
         setLoadingError(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+          "Проблема с соединением или сервер недоступен. Пожалуйста, попробуйте ещё раз"
         );
       });
   }
@@ -235,7 +235,7 @@ function App() {
       .catch(() => {
         localStorage.removeItem("savedMovies");
         setLoadingError(
-          "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз"
+          "Проблема с соединением или сервер недоступен. Пожалуйста, попробуйте ещё раз"
         );
       });
   }
