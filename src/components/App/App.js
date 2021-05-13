@@ -195,6 +195,7 @@ function App() {
   const [filterMovies, setFilterMovies] = React.useState([]);
   const [filterSavedMovies, setFilterSavedMovies] = React.useState([]);
   const [query, setQuery] = React.useState("");
+  const hasQuery = query.length !== 0;
 
   function getInitialMovies() {
     apiMovies
@@ -289,6 +290,7 @@ function App() {
       setFilterMovies(filter(initialMovies, query));
       setIsLoading(false);
     }, 500);
+
   }
 
   function onSubmitSearchSaved(query) {
@@ -302,6 +304,7 @@ function App() {
 
   //избранное
   function onBookmarkClick(movie, isMarked) {
+    console.log(isMarked)
     if (isMarked) {
       addMovie(movie);
     } else {
@@ -309,18 +312,17 @@ function App() {
     }
   }
 
+
   //удаление из избранного
   function deleteMovie(movie) {
     const movieId = savedMovies.find((item) => item.id === movie.id)._id;
+    console.log(movieId);
     apiMain
       .deleteMovies(movieId)
-      .then((res) => {
-        if (res) {
-          const newArray = savedMovies.filter(
-            (item) => item.movieId !== res.movieId
-          );
-          setSavedMovies(newArray);
-        }
+      .then(() => {
+          setSavedMovies(savedMovies.filter(
+            (item) => item._id !== movieId
+          ));
       })
       .catch(() => {
         setIsPopupOpen(true);
@@ -380,7 +382,7 @@ function App() {
               component={Movies}
               isLogin={isLogin}
               savedMovies={false}
-              movies={filterMovies}
+              movies={hasQuery ? filterMovies : initialMovies}
               isLoading={isLoading}
               loadingError={loadingError}
               isSavedMovie={isSavedMovie}

@@ -22,7 +22,6 @@ function MoviesCard({ savedMovies, movie, onBookmarkClick, isSavedMovie }) {
   }
 
   return (
-    <>
       <li className="grid__item">
         <a href={trailer}>
           <img src={image} alt="изображение фильма" className="grid__image" />
@@ -50,7 +49,6 @@ function MoviesCard({ savedMovies, movie, onBookmarkClick, isSavedMovie }) {
           <p className="grid__duration">{durationFormat(duration)}</p>
         </div>
       </li>
-    </>
   );
 }
 

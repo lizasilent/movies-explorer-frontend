@@ -12,10 +12,8 @@ function Register({ handleRegister }) {
 
   const submitHandle = (event) => {
     event.preventDefault();
-    console.log(email);
     handleRegister(name, email, password);
-    // formValidation.resetForm();
-    console.log("что-то произошло");
+    formValidation.resetForm();
   };
 
   return (
