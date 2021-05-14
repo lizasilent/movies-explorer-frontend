@@ -48,7 +48,6 @@ function App() {
   // установка и проверка токена
   React.useEffect(() => {
     const token = localStorage.getItem("token");
-    const path = location.pathname;
     if (token) {
       apiMain
         .checkToken(token)
@@ -56,7 +55,6 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             getCurrentUser();
-            history.push(path);
           }
         })
         .catch((err) => {
@@ -77,7 +75,7 @@ function App() {
         if (res) {
           setCurrentUser(res);
           localStorage.setItem("currentUser", JSON.stringify(res));
-          history.push("/movies");
+          history.push(path);
 
         }
       })
