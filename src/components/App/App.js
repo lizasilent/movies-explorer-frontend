@@ -48,6 +48,7 @@ function App() {
   // установка и проверка токена
   React.useEffect(() => {
     const token = localStorage.getItem("token");
+    const path = location.pathname;
     if (token) {
       apiMain
         .checkToken(token)
@@ -55,6 +56,7 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             getCurrentUser();
+            history.push(path);
           }
         })
         .catch((err) => {
@@ -68,14 +70,12 @@ function App() {
   // получаем данные текущего пользователя
   function getCurrentUser() {
     const token = localStorage.getItem("token");
-    const path = location.pathname;
     apiMain
       .getCurrentUser(token)
       .then((res) => {
         if (res) {
           setCurrentUser(res);
           localStorage.setItem("currentUser", JSON.stringify(res));
-          history.push(path);
 
         }
       })
@@ -151,13 +151,13 @@ function App() {
   function handleLogout() {
     setIsLoggedIn(false);
     localStorage.removeItem("token");
-    history.push("/");
     localStorage.removeItem("initialMovies");
     localStorage.removeItem("savedMovies");
     setInitialMovies([]);
     setSavedMovies([]);
     setFilterMovies([]);
     setFilterSavedMovies([]);
+    history.push("/");
   }
 
   // обновление информации о юзере
@@ -215,7 +215,7 @@ function App() {
         localStorage.setItem("initialMovies", JSON.stringify(initialArray));
         setInitialMovies(initialArray);
       })
-      .catch((err) => {
+      .catch(() => {
         localStorage.removeItem("initialMovies");
         setLoadingError(
           "Проблема с соединением или сервер недоступен. Пожалуйста, попробуйте ещё раз"
@@ -416,7 +416,7 @@ function App() {
             <Route exact path="/signup">
               <Register handleRegister={handleRegister} />
             </Route>
-            <Route path="*">
+            <Route path="/*">
               <NotFoundPage />
             </Route>
           </Switch>

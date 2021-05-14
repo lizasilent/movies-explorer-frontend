@@ -149,8 +149,8 @@ export class ApiMain {
 }
 
 const apiMain = new ApiMain({
-  baseUrl: "http://localhost:3002",
-  // baseUrl: "https://api.movies.lizasilent.nomoredomains.monster",
+  // baseUrl: "http://localhost:3002",
+  baseUrl: "https://api.movies.lizasilent.nomoredomains.monster",
   headers: {
     "Content-Type": "application/json",
   },
