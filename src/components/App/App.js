@@ -54,7 +54,7 @@ function App() {
           if (res) {
             setIsLoggedIn(true);
             getCurrentUser();
-            history.push("/movies");
+            // history.push("/movies");
           }
         })
         .catch((err) => {
@@ -415,7 +415,7 @@ function App() {
             <Route exact path="/signup">
               <Register handleRegister={handleRegister} />
             </Route>
-            <Route path="/*">
+            <Route path="*">
               <NotFoundPage />
             </Route>
           </Switch>
