@@ -418,6 +418,7 @@ function App() {
             <Route path="/*">
               <NotFoundPage />
             </Route>
+
           </Switch>
           <Popup
             isOpen={isPopupOpen}
