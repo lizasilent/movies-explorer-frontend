@@ -76,7 +76,6 @@ function App() {
         if (res) {
           setCurrentUser(res);
           localStorage.setItem("currentUser", JSON.stringify(res));
-
         }
       })
       .catch((err) => {
@@ -382,7 +381,6 @@ function App() {
               isLogin={isLogin}
               savedMovies={false}
               movies={hasQuery ? filterMovies : initialMovies}
-              // movies={filterMovies}
               isLoading={isLoading}
               loadingError={loadingError}
               isSavedMovie={isSavedMovie}
@@ -410,10 +408,11 @@ function App() {
               handleLogout={handleLogout}
               handleEditProfile={handleEditProfile}
             />
-            <Route exact path="/signin">
+
+            <Route path="/signin">
               <Login handleLogin={handleLogin} />
             </Route>
-            <Route exact path="/signup">
+            <Route path="/signup">
               <Register handleRegister={handleRegister} />
             </Route>
             <Route path="/*">
