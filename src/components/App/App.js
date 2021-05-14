@@ -304,14 +304,12 @@ function App() {
 
   //избранное
   function onBookmarkClick(movie, isMarked) {
-    console.log(isMarked)
     if (isMarked) {
       addMovie(movie);
     } else {
       deleteMovie(movie);
     }
   }
-
 
   //удаление из избранного
   function deleteMovie(movie) {
@@ -383,6 +381,7 @@ function App() {
               isLogin={isLogin}
               savedMovies={false}
               movies={hasQuery ? filterMovies : initialMovies}
+              // movies={filterMovies}
               isLoading={isLoading}
               loadingError={loadingError}
               isSavedMovie={isSavedMovie}
@@ -397,7 +396,7 @@ function App() {
               savedMovies={true}
               isLoading={isLoading}
               loadingError={loadingError}
-              movies={filterSavedMovies}
+              movies={hasQuery ? filterSavedMovies : savedMovies}
               onSubmitSearch={onSubmitSearchSaved}
               onBookmarkClick={onBookmarkClick}
               isSavedMovie={isSavedMovie}
