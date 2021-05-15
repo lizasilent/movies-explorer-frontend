@@ -1,6 +1,5 @@
 import React from 'react';
 import { Route, Link } from "react-router-dom";
-import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
 
 function ProtectedRoute({component: Component, ...props}) {
 
