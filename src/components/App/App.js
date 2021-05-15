@@ -355,14 +355,13 @@ function App() {
     localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
   }, [savedMovies]);
 
-  // // Разработка
-  // function devLogincheck() {
-  //   const token = localStorage.getItem("token");
-  //   console.log(isLogin);
-  //   console.log(currentUser);
-  // }
+  // Разработка
+  function devLogincheck() {
+    console.log(isLogin);
+    console.log(currentUser);
+  }
 
-  // devLogincheck();
+  devLogincheck();
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -409,13 +408,13 @@ function App() {
               handleEditProfile={handleEditProfile}
             />
 
-            <Route path="/signin">
+            <Route exact path="/signin">
               <Login handleLogin={handleLogin} />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <Register handleRegister={handleRegister} />
             </Route>
-            <Route path="/*">
+            <Route path="*">
               <NotFoundPage />
             </Route>
 

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
+import NotFoundPage from "../NotFoundPage/NotFoundPage.js";
 
 function ProtectedRoute({component: Component, ...props}) {
 
   return (
     <Route>
       {
-        () => props.isLogin ? <Component {...props} /> : <Redirect to="/signin" />
+        () => props.isLogin ? <Component {...props} /> : <Link to="/signin" />
       }
     </Route>
   )
